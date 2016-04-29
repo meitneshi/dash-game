@@ -6,8 +6,28 @@
 
   <div class="main-container">
     <!-- <pre>{{games | json}}</pre> -->
-    <div ng-repeat="game in games">
-      <a class="btn btn-success" ng-href="#/{{game.endpoint}}">{{game.name}}</a>
+    <div ng-repeat="game in games" class="games-container">
+      <div class="game-container">
+        <div class="game-btn" ng-click="loadGame(game)">
+            <div class="game-name">
+              {{game.name}}
+            </div>
+            <div class"game-logo">
+              logo
+            </div>
+        </div>
+        <div class="info-btns">
+          <div class="info-btn" ng-class="game.soloGame ? 'option-able' : 'option-disable'" popover-placement="right" popover-trigger="mouseenter" popover-html-unsafe="toto">
+            <i class="fa fa-user fa-2x"></i>
+          </div>
+          <div class="info-btn" ng-class="game.localMultiplayer ? 'option-able' : 'option-disable'">
+            <i class="fa fa-users fa-2x"></i>
+          </div>
+          <div class="info-btn" ng-class="game.iaAvailable ? 'option-able' : 'option-disable'">
+            <i class="fa fa-desktop fa-2x"></i>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

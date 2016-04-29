@@ -7,7 +7,7 @@
  * Created by mbibos on 10/03/15.
  */
 
-var MainCtrl = function ($scope, mainService) {
+var MainCtrl = function ($scope, $location, mainService) {
 
   /*===============================*/
   /*======scope variables==========*/
@@ -31,6 +31,7 @@ var MainCtrl = function ($scope, mainService) {
 
   //initialization of scope function (throw "empty")
   $scope.initGames = function () { throw "Empty !"; };
+  $scope.loadGame = function () { throw "Empty !"; };
 
 
   /*===============================*/
@@ -48,6 +49,10 @@ var MainCtrl = function ($scope, mainService) {
     mainService.initGames($scope);
   };
 
+  $scope.loadGame = function (game) {
+    $location.path('/' + game.endpoint);
+  }
+
   $scope.$on("games_initialized", function (e, games) {
     $scope.games = games;
   });
@@ -55,4 +60,4 @@ var MainCtrl = function ($scope, mainService) {
   $scope.initGames();
 };
 
-angular.module('dashGameApp').controller('MainCtrl', ['$scope', 'mainService', MainCtrl]);
+angular.module('dashGameApp').controller('MainCtrl', ['$scope', '$location', 'mainService', MainCtrl]);

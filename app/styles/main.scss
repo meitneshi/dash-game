@@ -14,3 +14,51 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   right:150px;
   bottom: 50px;
 }
+
+.games-container {
+  display:inline-flex;
+}
+
+.game-container {
+
+}
+
+.game-btn:hover {
+  cursor: pointer;
+}
+
+.game-btn {
+    height:200px;
+    width:150px;
+    display:block;
+    background-color: #ccc;
+    color: #000;
+    text-decoration:none;
+    padding:10px;
+    margin:15px;
+}
+
+.game-name {
+
+}
+
+.game-logo {
+
+}
+
+.info-btns {
+  text-align: center;
+}
+
+.info-btn {
+  display: inline-block;
+  margin:0px 5px 0px 5px;
+}
+
+.option-able {
+  color: #00aa00;
+}
+
+.option-disable {
+  color: #aa0000;
+}
