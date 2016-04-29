@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Card Battle",
+    "endpoint": "cardbattle",
+    "type": "card",
+    "soloGame": true,
+    "localMultiplayer": false,
+    "iaAvailable": true
+  },{
+    "name": "Black Jack",
+    "endpoint": "blackjack",
+    "type": "card",
+    "soloGame": true,
+    "localMultiplayer": true,
+    "iaAvailable": false
+  },{
+    "name": "Yam's",
+    "endpoint": "yams",
+    "type": "dice",
+    "soloGame": true,
+    "localMultiplayer": true,
+    "iaAvailable": false
+  }
+]

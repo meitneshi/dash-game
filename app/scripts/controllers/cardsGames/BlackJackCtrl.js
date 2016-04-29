@@ -7,14 +7,13 @@
  * Created by mbibos on 10/03/15.
  */
 
-var CardBattleCtrl = function ($scope, cardService) {
+var BlackJackCtrl = function ($scope) {
 
   /*===============================*/
   /*======scope variables==========*/
   /*===============================*/
 
   //scope variable declared here
-  $scope.cards;
 
 
   /*========================================*/
@@ -22,14 +21,12 @@ var CardBattleCtrl = function ($scope, cardService) {
   /*========================================*/
 
   //scope variables init here;
-  $scope.cards = [];
 
   /*========================================*/
   /*======== init scope functions ==========*/
   /*========================================*/
 
   //initialization of scope function (throw "empty")
-  $scope.initCards = function () { throw "Empty !"; };
 
 
   /*===============================*/
@@ -43,15 +40,6 @@ var CardBattleCtrl = function ($scope, cardService) {
   /*======scope functions==========*/
   /*===============================*/
 
-  $scope.initCards = function () {
-    cardService.initCards($scope);
-  };
-
-  $scope.$on('cards_loaded', function (e, cards)  {
-    $scope.cards = cards;
-  });
-
-  $scope.initCards();
 };
 
-angular.module('dashGameApp').controller('CardBattleCtrl', ['$scope', 'cardService', CardBattleCtrl]);
+angular.module('dashGameApp').controller('BlackJackCtrl', ['$scope', BlackJackCtrl]);

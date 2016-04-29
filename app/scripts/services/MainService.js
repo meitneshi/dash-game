@@ -7,24 +7,24 @@
  * Created by mbibos on 10/03/15.
  */
 
-var cardBattleService = function ($http) {
+var mainService = function ($http) {
 
   //Self reference
-  var cardBattleService = this;
+  var mainService = this;
 
 
   //----------------------------------------------------------------------
   // Service interface variables declaration
   //----------------------------------------------------------------------
 
-  this.cardBattleService = null;
+  this.mainService = null;
 
 
   //----------------------------------------------------------------------
   // Service interface functions declaration
   //----------------------------------------------------------------------
 
-  this.initCards = function () { throw "Empty!"; };
+  this.initGames = function () { throw "Empty!"; };
 
 
   //----------------------------------------------------------------------
@@ -38,13 +38,11 @@ var cardBattleService = function ($http) {
   // Init service functions
   //----------------------------------------------------------------------
 
-  this.initCards = function (scope) {
-    var cards = [];
-    $http.get('/assets/cards/deck.json').success(function(response) {
-        cards = cards.concat(response);
-        scope.$emit('cards_loaded', cards);
+  this.initGames = function (scope) {
+    $http.get('/assets/games.json').success(function(response) {
+        scope.$emit('games_initialized', response);
     });
   }
 };
 
-angular.module('dashGameApp').service('cardBattleService', ['$http', cardBattleService]);
+angular.module('dashGameApp').service('mainService', ['$http', mainService]);

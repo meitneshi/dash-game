@@ -5,7 +5,11 @@
   <div ng-include="'views/partials/menu.html'"></div>
 
   <div class="main-container">
-    <a class="btn btn-success" ng-href="#/cardBattle">Card Battle</a>
+    <!-- <pre>{{games | json}}</pre> -->
+    <div ng-repeat="game in games">
+      <a class="btn btn-success" ng-href="#/{{game.endpoint}}">{{game.name}}</a>
+    </div>
+
   </div>
 
   <div ng-include="'views/partials/footer.html'"></div>

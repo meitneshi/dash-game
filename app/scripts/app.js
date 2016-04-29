@@ -13,9 +13,17 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/cardBattle', {
+      .when('/cardbattle', {
         templateUrl: 'views/cardsGames/cardBattle.html',
         controller: 'CardBattleCtrl'
+      })
+      .when('/blackjack', {
+        templateUrl: 'views/cardsGames/blackJack.html',
+        controller: 'BlackJackCtrl'
+      })
+      .when('/yams', {
+        templateUrl: 'views/diceGames/yams.html',
+        controller: 'YamsCtrl'
       })
       .otherwise({
         redirectTo: '/'

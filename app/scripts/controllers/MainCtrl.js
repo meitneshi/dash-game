@@ -7,13 +7,14 @@
  * Created by mbibos on 10/03/15.
  */
 
-var MainCtrl = function ($scope) {
+var MainCtrl = function ($scope, mainService) {
 
   /*===============================*/
   /*======scope variables==========*/
   /*===============================*/
 
   //scope variable declared here
+  $scope.games;
 
 
   /*========================================*/
@@ -21,6 +22,7 @@ var MainCtrl = function ($scope) {
   /*========================================*/
 
   //scope variables init here;
+  $scope.games = [];
 
 
   /*========================================*/
@@ -28,6 +30,7 @@ var MainCtrl = function ($scope) {
   /*========================================*/
 
   //initialization of scope function (throw "empty")
+  $scope.initGames = function () { throw "Empty !"; };
 
 
   /*===============================*/
@@ -41,7 +44,15 @@ var MainCtrl = function ($scope) {
   /*======scope functions==========*/
   /*===============================*/
 
+  $scope.initGames = function () {
+    mainService.initGames($scope);
+  };
 
+  $scope.$on("games_initialized", function (e, games) {
+    $scope.games = games;
+  });
+
+  $scope.initGames();
 };
 
-angular.module('dashGameApp').controller('MainCtrl', ['$scope', MainCtrl]);
+angular.module('dashGameApp').controller('MainCtrl', ['$scope', 'mainService', MainCtrl]);
