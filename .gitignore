@@ -1,30 +1,28 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+**.iml
+**/.DS_Store
+**/*.orig
 
-# Precompiled Headers
-*.gch
-*.pch
+# Eclipse
+.classpath
+.settings
+.project
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+*/app/.buildignore
+*/app/.htaccess
+.editorconfig
+.gitattributes
+.jshintrc
+.travis.yml
+.idea
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
+**/node_modules/
+**/bower_components/
+**/app/bower_components/
+**/target/
+**/dist/
+**/.tmp/
+**/.sass-cache
+**/test-results.xml
 *.x86_64
 *.hex
 
