@@ -1,0 +1,13 @@
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+.header {
+  background-color: #ff0000;
+  position:fixed;
+  top:0;
+  left:150px;
+  right:150px;
+  height:50px;
+}

@@ -1,0 +1,93 @@
+[
+  {
+    "value" : 1,
+    "label" : "Ace",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 2,
+    "label" : "2",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 3,
+    "label" : "3",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 4,
+    "label" : "4",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 5,
+    "label" : "5",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 6,
+    "label" : "6",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 7,
+    "label" : "7",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 8,
+    "label" : "8",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 9,
+    "label" : "9",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 10,
+    "label" : "10",
+    "figure" : false,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 11,
+    "label" : "Jack",
+    "figure" : true,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 12,
+    "label" : "Queen",
+    "figure" : true,
+    "symbol" : "diamonds",
+    "color" : "red"
+  },
+  {
+    "value" : 13,
+    "label" : "King",
+    "figure" : true,
+    "symbol" : "diamonds",
+    "color" : "red"
+  }
+]

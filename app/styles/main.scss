@@ -1,0 +1,16 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+.main-container {
+  background-color: #ffff00;
+  position: fixed;
+  top: 50px;
+  left: 450px;
+  right:150px;
+  bottom: 50px;
+}

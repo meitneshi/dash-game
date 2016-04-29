@@ -1,0 +1,13 @@
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+.menu {
+  background-color: #00ff00;
+  position: fixed;
+  top: 50px;
+  left: 150px;
+  bottom: 50px;
+  width:300px;
+}
