@@ -25,6 +25,7 @@
 **/test-results.xml
 *.x86_64
 *.hex
+.bowerrc
 
 # Debug files
 *.dSYM/
