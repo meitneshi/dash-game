@@ -51,7 +51,7 @@ var MainCtrl = function ($scope, $location, mainService) {
 
   $scope.loadGame = function (game) {
     $location.path('/' + game.endpoint);
-  }
+  };
 
   $scope.$on("games_initialized", function (e, games) {
     $scope.games = games;

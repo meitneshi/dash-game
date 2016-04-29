@@ -28,14 +28,14 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 
 .game-btn {
-    height:200px;
-    width:150px;
-    display:block;
-    background-color: #ccc;
-    color: #000;
-    text-decoration:none;
-    padding:10px;
-    margin:15px;
+  height:200px;
+  width:150px;
+  display:block;
+  background-color: #ccc;
+  color: #000;
+  text-decoration:none;
+  padding:10px;
+  margin:15px;
 }
 
 .game-name {
@@ -43,7 +43,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 
 .game-logo {
-
+  height: 100px;
 }
 
 .info-btns {
@@ -54,6 +54,11 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   display: inline-block;
   margin:0px 5px 0px 5px;
 }
+
+.info-btn:hover {
+  cursor: help;
+}
+
 
 .option-able {
   color: #00aa00;

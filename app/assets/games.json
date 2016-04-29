@@ -5,20 +5,23 @@
     "type": "card",
     "soloGame": true,
     "localMultiplayer": false,
-    "iaAvailable": true
+    "iaAvailable": true,
+    "icon": "cards-icon.png"
   },{
     "name": "Black Jack",
     "endpoint": "blackjack",
     "type": "card",
     "soloGame": true,
     "localMultiplayer": true,
-    "iaAvailable": false
+    "iaAvailable": false,
+    "icon": "cards-icon.png"
   },{
     "name": "Yam's",
     "endpoint": "yams",
     "type": "dice",
     "soloGame": true,
     "localMultiplayer": true,
-    "iaAvailable": false
+    "iaAvailable": false,
+    "icon": "dices-icon.png"
   }
 ]
