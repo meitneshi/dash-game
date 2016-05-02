@@ -7,14 +7,16 @@
  * Created by mbibos on 10/03/15.
  */
 
-var MainCtrl = function ($scope, $location, mainService, sharedService) {
+var MainCtrl = function ($scope, $location, mainService, sharedService, localStorageService) {
 
   /*===============================*/
   /*======scope variables==========*/
   /*===============================*/
 
   //scope variable declared here
-  $scope.games;
+  $scope.allGames;
+  $scope.displayGames;
+  $scope.selectedGameType;
 
 
   /*========================================*/
@@ -22,7 +24,9 @@ var MainCtrl = function ($scope, $location, mainService, sharedService) {
   /*========================================*/
 
   //scope variables init here;
-  $scope.games = [];
+  $scope.allGames = [];
+  $scope.displayGames = []
+  $scope.selectedGameType = localStorageService.get("selectedGameType");
 
 
   /*========================================*/
@@ -49,6 +53,15 @@ var MainCtrl = function ($scope, $location, mainService, sharedService) {
     sharedService.setGameTypes(gameTypes);
   };
 
+  var setDisplayGames = function (gameType) {
+    $scope.displayGames = [];
+    angular.forEach($scope.allGames, function (game) {
+      if(game.type === gameType) {
+        $scope.displayGames.push(game);
+      }
+    })
+  };
+
 
   /*===============================*/
   /*======scope functions==========*/
@@ -63,11 +76,17 @@ var MainCtrl = function ($scope, $location, mainService, sharedService) {
   };
 
   $scope.$on("games_initialized", function (e, games) {
-    $scope.games = games;
-    initializeTypeGameList($scope.games);
+    $scope.allGames = games;
+    initializeTypeGameList($scope.allGames);
+    setDisplayGames(localStorageService.get("selectedGameType"));
+  });
+
+  $scope.$on("game_type_change", function (e, gameType) {
+    setDisplayGames(gameType);
   });
 
   $scope.initGames();
+  localStorageService.set("selectedGameType", "card");
 };
 
-angular.module('dashGameApp').controller('MainCtrl', ['$scope', '$location', 'mainService', 'sharedService', MainCtrl]);
+angular.module('dashGameApp').controller('MainCtrl', ['$scope', '$location', 'mainService', 'sharedService', 'localStorageService', MainCtrl]);

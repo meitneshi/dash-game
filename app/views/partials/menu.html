@@ -1,4 +1,5 @@
 <div class="menu" ng-controller="MenuCtrl">
-  Menu
-  <pre>{{gameTypes | json}}</pre>
+  <div ng-repeat="gameType in gameTypes" class="menu-item" ng-click="selectType(gameType)" ng-class="isSelected(gameType) ? 'selected' : ''">
+    {{gameType}}
+  </div>
 </div>
