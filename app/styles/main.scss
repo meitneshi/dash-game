@@ -8,6 +8,12 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 @import "vars.scss";
 
+body {
+  background-color: #000;
+  background-image: url("../images/20dice.jpg");
+  background-size: 100%;
+  filter: opacity(0.95);
+}
 .main-container {
   background-color: $main_panel_background_color;
   position: fixed;

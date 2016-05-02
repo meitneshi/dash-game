@@ -86,7 +86,7 @@ var MainCtrl = function ($scope, $location, mainService, sharedService, localSto
   });
 
   $scope.initGames();
-  localStorageService.set("selectedGameType", "card");
+  localStorageService.set("selectedGameType", "Card");
 };
 
 angular.module('dashGameApp').controller('MainCtrl', ['$scope', '$location', 'mainService', 'sharedService', 'localStorageService', MainCtrl]);

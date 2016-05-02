@@ -5,10 +5,24 @@
 @import 'vars.scss';
 
 .footer {
-  background-color: $footer_background_color;
+  background-color: $item_background_color;
   position:fixed;
   bottom:0;
   left:150px;
   right:150px;
   height:50px;
+  border-top: solid $item_delimiter_color 2px;
+  border-bottom: solid $item_delimiter_color 2px;
+}
+
+.footer-content {
+  color: $main_text_color;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  font-weight: bold;
 }

@@ -5,10 +5,20 @@
 @import 'vars.scss';
 
 .header {
-  background-color: $header_background_color;
+  background-color: $item_background_color;
   position:fixed;
   top:0;
   left:150px;
   right:150px;
   height:$header_height;
+  color: $main_text_color;
+  font-weight: bold;
+  border-top: solid $item_delimiter_color 2px;
+  border-bottom: solid $item_delimiter_color 2px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

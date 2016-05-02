@@ -2,7 +2,7 @@
   {
     "name": "Card Battle",
     "endpoint": "cardbattle",
-    "type": "card",
+    "type": "Card",
     "soloGame": true,
     "localMultiplayer": false,
     "iaAvailable": true,
@@ -10,7 +10,7 @@
   },{
     "name": "Black Jack",
     "endpoint": "blackjack",
-    "type": "card",
+    "type": "Card",
     "soloGame": true,
     "localMultiplayer": true,
     "iaAvailable": false,
@@ -18,7 +18,7 @@
   },{
     "name": "Yam's",
     "endpoint": "yams",
-    "type": "dice",
+    "type": "Dice",
     "soloGame": true,
     "localMultiplayer": true,
     "iaAvailable": false,
