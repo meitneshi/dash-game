@@ -7,13 +7,13 @@
  * Created by mbibos on 10/03/15.
  */
 
-var MenuCtrl = function ($scope) {
+var MenuCtrl = function ($scope, sharedService) {
 
   /*===============================*/
   /*======scope variables==========*/
   /*===============================*/
-
   //scope variable declared here
+  $scope.gameTypes;
 
 
   /*========================================*/
@@ -21,6 +21,7 @@ var MenuCtrl = function ($scope) {
   /*========================================*/
 
   //scope variables init here;
+  $scope.gameTypes = sharedService.getGameTypes();
 
 
   /*========================================*/
@@ -44,4 +45,4 @@ var MenuCtrl = function ($scope) {
 
 };
 
-angular.module('dashGameApp').controller('MenuCtrl', ['$scope', MenuCtrl]);
+angular.module('dashGameApp').controller('MenuCtrl', ['$scope', 'sharedService', MenuCtrl]);

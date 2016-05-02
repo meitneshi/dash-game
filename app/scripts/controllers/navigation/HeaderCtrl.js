@@ -7,13 +7,14 @@
  * Created by mbibos on 10/03/15.
  */
 
-var HeaderCtrl = function ($scope) {
+var HeaderCtrl = function ($scope, sharedService) {
 
   /*===============================*/
   /*======scope variables==========*/
   /*===============================*/
 
   //scope variable declared here
+  $scope.pageTitle;
 
 
   /*========================================*/
@@ -21,6 +22,7 @@ var HeaderCtrl = function ($scope) {
   /*========================================*/
 
   //scope variables init here;
+  $scope.pageTitle = sharedService.getPageTitle();
 
 
   /*========================================*/
@@ -44,4 +46,4 @@ var HeaderCtrl = function ($scope) {
 
 };
 
-angular.module('dashGameApp').controller('HeaderCtrl', ['$scope', HeaderCtrl]);
+angular.module('dashGameApp').controller('HeaderCtrl', ['$scope', 'sharedService', HeaderCtrl]);

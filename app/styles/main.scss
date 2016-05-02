@@ -6,10 +6,12 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+@import "vars.scss";
+
 .main-container {
-  background-color: #ffff00;
+  background-color: $main_panel_background_color;
   position: fixed;
-  top: 50px;
+  top: $header_height;
   left: 450px;
   right:150px;
   bottom: 50px;

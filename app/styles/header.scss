@@ -2,12 +2,13 @@
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
+@import 'vars.scss';
 
 .header {
-  background-color: #ff0000;
+  background-color: $header_background_color;
   position:fixed;
   top:0;
   left:150px;
   right:150px;
-  height:50px;
+  height:$header_height;
 }

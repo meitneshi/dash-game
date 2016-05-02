@@ -42,7 +42,7 @@ var mainService = function ($http) {
     $http.get('/assets/games.json').success(function(response) {
         scope.$emit('games_initialized', response);
     });
-  }
+  };
 };
 
 angular.module('dashGameApp').service('mainService', ['$http', mainService]);

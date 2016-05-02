@@ -2,11 +2,12 @@
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
+@import 'vars.scss';
 
 .menu {
-  background-color: #00ff00;
+  background-color: $menu_background_color;
   position: fixed;
-  top: 50px;
+  top: $header_height;
   left: 150px;
   bottom: 50px;
   width:300px;

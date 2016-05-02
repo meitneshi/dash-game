@@ -2,9 +2,10 @@
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
+@import 'vars.scss';
 
 .footer {
-  background-color: #0000ff;
+  background-color: $footer_background_color;
   position:fixed;
   bottom:0;
   left:150px;

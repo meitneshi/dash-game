@@ -7,7 +7,7 @@
  * Created by mbibos on 10/03/15.
  */
 
-var MainCtrl = function ($scope, $location, mainService) {
+var MainCtrl = function ($scope, $location, mainService, sharedService) {
 
   /*===============================*/
   /*======scope variables==========*/
@@ -39,6 +39,15 @@ var MainCtrl = function ($scope, $location, mainService) {
   /*===============================*/
 
   //Put here private variable
+  var initializeTypeGameList = function (gamesList) {
+    var gameTypes = [];
+    angular.forEach(gamesList, function (game) {
+      if (gameTypes.indexOf(game.type) === -1) {
+          gameTypes.push(game.type);
+      }
+    });
+    sharedService.setGameTypes(gameTypes);
+  };
 
 
   /*===============================*/
@@ -55,9 +64,10 @@ var MainCtrl = function ($scope, $location, mainService) {
 
   $scope.$on("games_initialized", function (e, games) {
     $scope.games = games;
+    initializeTypeGameList($scope.games);
   });
 
   $scope.initGames();
 };
 
-angular.module('dashGameApp').controller('MainCtrl', ['$scope', '$location', 'mainService', MainCtrl]);
+angular.module('dashGameApp').controller('MainCtrl', ['$scope', '$location', 'mainService', 'sharedService', MainCtrl]);

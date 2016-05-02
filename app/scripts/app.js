@@ -25,6 +25,9 @@ angular
         templateUrl: 'views/diceGames/yams.html',
         controller: 'YamsCtrl'
       })
+      .when('/patch-note', {
+        templateUrl: 'views/pages/patch-note.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
