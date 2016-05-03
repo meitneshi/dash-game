@@ -7,44 +7,98 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 // endbower
 
 @import "vars.scss";
+@import "mixins.scss";
 
 body {
   background-color: #000;
   background-image: url("../images/20dice.jpg");
-  background-
   background-size: 100%;
   filter: opacity(0.95);
 }
 .main-container {
-  background-color: $main_panel_background_color;
+  background-color: $item_background_color;
   position: fixed;
   top: $header_height;
   left: 450px;
   right:150px;
   bottom: 50px;
+  margin: 10px 0px 10px 10px;
+  border-left:solid $item_delimiter_color 2px;
+  border-right:solid $item_delimiter_color 2px;
 }
 
 .games-container {
   display:inline-flex;
+
 }
 
 .game-container {
 
 }
 
-.game-btn:hover {
-  cursor: pointer;
-}
+/*----------------------------------------*/
+/* WORKING EWAMPLE OF FLIPPING CARD BEGIN */
+/*----------------------------------------*/
+// .card-container {
+//   width: 150px;
+//   height: 200px;
+//   position: relative;
+//   //perspective: 800px;
+// }
+//
+// .card {
+//   width: 150px;
+//   height: 200px;
+//   position: absolute;
+//   transform-style: preserve-3d;
+//   transition: transform 1s;
+//
+//   figure {
+//     margin: 0;
+//     display: block;
+//     position: absolute;
+//     width: 150px;
+//     height: 200px;
+//     backface-visibility: hidden
+//   }
+//
+//   .front {
+//     background: red;
+//   }
+//
+//   .back {
+//     background: blue;
+//   transform: rotateY( 180deg );
+//   }
+//
+// }
+//
+// .card:hover {
+//   transform: rotateY( 180deg );
+// }
+
+/*--------------------------------------*/
+/* WORKING EWAMPLE OF FLIPPING CARD END */
+/*--------------------------------------*/
 
 .game-btn {
   height:200px;
   width:150px;
   display:block;
-  background-color: #ccc;
-  color: #000;
+  background-color: $game_card_background;
+  color: $white;
   text-decoration:none;
   padding:10px;
-  margin:15px;
+  margin:15px 15px 0px 15px;
+  @include border-radius-minimal(8px);
+  @include box-shadow(0px, 4px, 2px, -2px, #000);
+  border: solid $item_delimiter_color_light 2px;
+}
+
+.game-btn:hover {
+  background-color: $game_card_background_light;
+  cursor: pointer;
+  @include box-shadow(0px, 0px, 20px, 2px, $game_card_shadow);
 }
 
 .game-name {
@@ -57,15 +111,21 @@ body {
 
 .info-btns {
   text-align: center;
+  background-color: $game_card_background;
+  margin: 0px 35px 0px 35px;
+  border: solid $item_delimiter_color_light 2px;
+  border-top: none;
+  @include border-radius-full(0px, 0px, 10px, 10px);
+  @include box-shadow(0px, 4px, 2px, -2px, #000);
 }
 
 .info-btn {
   display: inline-block;
   margin:0px 5px 0px 5px;
+  font-size: 25px;
 }
 
 .info-btn:hover {
-  cursor: help;
 }
 
 

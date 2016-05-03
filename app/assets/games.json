@@ -6,15 +6,17 @@
     "soloGame": true,
     "localMultiplayer": false,
     "iaAvailable": true,
-    "icon": "cards-icon.png"
+    "icon": "cards-icon.png",
+    "description": "Description of card battle"
   },{
     "name": "Black Jack",
     "endpoint": "blackjack",
     "type": "Card",
-    "soloGame": true,
+    "soloGame": false,
     "localMultiplayer": true,
     "iaAvailable": false,
-    "icon": "cards-icon.png"
+    "icon": "cards-icon.png",
+    "description": "Description of Black Jack"
   },{
     "name": "Yam's",
     "endpoint": "yams",
@@ -22,6 +24,7 @@
     "soloGame": true,
     "localMultiplayer": true,
     "iaAvailable": false,
-    "icon": "dices-icon.png"
+    "icon": "dices-icon.png",
+    "description": "Description of Yam's"
   }
 ]

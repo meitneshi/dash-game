@@ -12,21 +12,30 @@
             <div class="game-name">
               {{game.name}}
             </div>
-            <div>
-              <img class"game-logo" ng-src="images/{{game.icon}}"/>
+            <div class"game-logo">
+              <img ng-src="images/{{game.icon}}"/>
             </div>
         </div>
         <div class="info-btns">
-          <div class="info-btn" ng-class="game.soloGame ? 'option-able' : 'option-disable'">
-            <i class="fa fa-user fa-2x"></i>
+          <!-- WORKING EXAMPLE OF FLIPPING CARD BEGIN (CF STYLE) -->
+          <!-- <div card="card-container">
+            <div class="card">
+              <figure class="front">1</figure>
+              <figure class="back">2</figure>
+            </div>
+          </div> -->
+          <!-- WORKING EXAMPLE OF FLIPPING CARD END (CF STYLE) -->
+
+          <div class="info-btn" ng-class="game.soloGame ? 'option-able' : 'option-disable'" popover-placement="right" popover-trigger="mouseenter" popover-html-unsafe="Coucou hiboux">
+            <i class="fa fa-user"></i>
           </div>
 
           <div class="info-btn" ng-class="game.localMultiplayer ? 'option-able' : 'option-disable'">
-            <i class="fa fa-users fa-2x"></i>
+            <i class="fa fa-users"></i>
           </div>
 
           <div class="info-btn" ng-class="game.iaAvailable ? 'option-able' : 'option-disable'">
-            <i class="fa fa-desktop fa-2x"></i>
+            <i class="fa fa-desktop"></i>
           </div>
 
         </div>
