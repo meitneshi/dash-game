@@ -27,63 +27,15 @@ body {
   border-right:solid $item_delimiter_color 2px;
 }
 
-.games-container {
-  display:inline-flex;
-
+.cards-container {
+  display: inline-flex;
 }
 
-.game-container {
-
-}
-
-/*----------------------------------------*/
-/* WORKING EWAMPLE OF FLIPPING CARD BEGIN */
-/*----------------------------------------*/
-// .card-container {
-//   width: 150px;
-//   height: 200px;
-//   position: relative;
-//   //perspective: 800px;
-// }
-//
-// .card {
-//   width: 150px;
-//   height: 200px;
-//   position: absolute;
-//   transform-style: preserve-3d;
-//   transition: transform 1s;
-//
-//   figure {
-//     margin: 0;
-//     display: block;
-//     position: absolute;
-//     width: 150px;
-//     height: 200px;
-//     backface-visibility: hidden
-//   }
-//
-//   .front {
-//     background: red;
-//   }
-//
-//   .back {
-//     background: blue;
-//   transform: rotateY( 180deg );
-//   }
-//
-// }
-//
-// .card:hover {
-//   transform: rotateY( 180deg );
-// }
-
-/*--------------------------------------*/
-/* WORKING EWAMPLE OF FLIPPING CARD END */
-/*--------------------------------------*/
-
-.game-btn {
-  height:200px;
-  width:150px;
+.card {
+  width: 150px;
+  height: 200px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
   display:block;
   background-color: $game_card_background;
   color: $white;
@@ -91,48 +43,74 @@ body {
   padding:10px;
   margin:15px 15px 0px 15px;
   @include border-radius-minimal(8px);
-  @include box-shadow(0px, 4px, 2px, -2px, #000);
+  @include box-shadow(4px, 4px, 2px, -2px, #000);
   border: solid $item_delimiter_color_light 2px;
+
+  figure {
+    display: block;
+    position: absolute;
+    top: 0;
+    margin-top: -2px;
+    left:0;
+    margin-left: -2px;
+    width: 150px;
+    height: 200px;
+    backface-visibility: hidden
+  }
+
+  .front {
+    .game-name {
+      text-align: center;
+      font-size: 25px;
+      margin-top:10px;
+      margin-bottom: 20px;
+    }
+
+    .game-logo {
+      display:block;
+      margin:auto;
+      @include border-radius-minimal(50%);
+      background-color: $item_delimiter_color_light;
+    }
+  }
+
+  .back {
+    transform: rotateY( 180deg );
+    .game-header {
+      width:100%;
+      display: inline-flex;
+      margin: 10px 5px 10px 5px;
+      font-size: 15px;
+      .game-name {
+        display:block;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left:5px;
+      }
+      img {
+        height: 50px;
+      }
+    }
+    .game-settings {
+      margin:30px 10px 5px 10px;
+      .setting {
+        font-size:12px;
+        font-weight: bold;
+        margin: 10px 0px 10px 0px;
+      }
+      .setting-able {
+        color: $green_able;
+      }
+      .setting-disable {
+        color: $red_disable;
+      }
+    }
+  }
 }
 
-.game-btn:hover {
+.card:hover {
   background-color: $game_card_background_light;
   cursor: pointer;
   @include box-shadow(0px, 0px, 20px, 2px, $game_card_shadow);
-}
-
-.game-name {
-
-}
-
-.game-logo {
-  height: 100px;
-}
-
-.info-btns {
-  text-align: center;
-  background-color: $game_card_background;
-  margin: 0px 35px 0px 35px;
-  border: solid $item_delimiter_color_light 2px;
-  border-top: none;
-  @include border-radius-full(0px, 0px, 10px, 10px);
-  @include box-shadow(0px, 4px, 2px, -2px, #000);
-}
-
-.info-btn {
-  display: inline-block;
-  margin:0px 5px 0px 5px;
-  font-size: 25px;
-}
-
-.info-btn:hover {
-}
-
-
-.option-able {
-  color: #00aa00;
-}
-
-.option-disable {
-  color: #aa0000;
+  transform: rotateY( 180deg );
 }

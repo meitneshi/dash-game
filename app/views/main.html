@@ -6,26 +6,55 @@
 
   <div class="main-container">
     <!-- <pre>{{games | json}}</pre> -->
-    <div ng-repeat="game in displayGames" class="games-container">
-      <div class="game-container">
-        <div class="game-btn" ng-click="loadGame(game)">
+    <div ng-repeat="game in displayGames" class="cards-container">
+      <div class="card" ng-click="loadGame(game)">
+        <figure class="front">
+          <div class="game-name">
+            {{game.name}}
+          </div>
+          <div>
+            <img class="game-logo" ng-src="images/{{game.icon}}"/>
+          </div>
+        </figure>
+        <figure class="back">
+          <div class="game-header">
+            <div class="game-logo">
+              <img class="game-logo" ng-src="images/{{game.icon}}"/>
+            </div>
             <div class="game-name">
               {{game.name}}
             </div>
-            <div class"game-logo">
-              <img ng-src="images/{{game.icon}}"/>
+          </div>
+          <div class="game-settings">
+            <div class="setting">
+              <div class="setting-title" ng-class="game.soloGame ? 'setting-able' : 'setting-disable'">
+                <i class="fa fa-user"></i> One-player game
+              </div>
             </div>
-        </div>
-        <div class="info-btns">
-          <!-- WORKING EXAMPLE OF FLIPPING CARD BEGIN (CF STYLE) -->
-          <!-- <div card="card-container">
-            <div class="card">
-              <figure class="front">1</figure>
-              <figure class="back">2</figure>
+            <div class="setting">
+              <div class="setting-title" ng-class="game.localMultiplayer ? 'setting-able' : 'setting-disable'">
+                <i class="fa fa-users"></i> Local multi-player
+              </div>
             </div>
-          </div> -->
-          <!-- WORKING EXAMPLE OF FLIPPING CARD END (CF STYLE) -->
+            <div class="setting">
+              <div class="setting-title" ng-class="game.iaAvailable ? 'setting-able' : 'setting-disable'">
+                <i class="fa fa-desktop"></i> Play vs AI
+              </div>
+            </div>
+          </div>
+        </figure>
+      </div>
 
+      <!-- <div class="game-container"> -->
+        <!-- <div class="game-btn" ng-click="loadGame(game)"> -->
+            <!-- <div class="game-name">
+              {{game.name}}
+            </div>
+            <div>
+              <img class="game-logo" ng-src="images/{{game.icon}}"/>
+            </div> -->
+        <!-- </div> -->
+        <!-- <div class="info-btns">
           <div class="info-btn" ng-class="game.soloGame ? 'option-able' : 'option-disable'" popover-placement="right" popover-trigger="mouseenter" popover-html-unsafe="Coucou hiboux">
             <i class="fa fa-user"></i>
           </div>
@@ -38,8 +67,8 @@
             <i class="fa fa-desktop"></i>
           </div>
 
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
     </div>
 
   </div>
