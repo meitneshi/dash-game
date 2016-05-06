@@ -15,21 +15,9 @@ angular
         controller: 'MainCtrl'
       })
       .when('/game', {
-        templateUrl: 'views/game.html',
+        templateUrl: 'views/pages/game.html',
         controller: 'GameCtrl'
       })
-      /*.when('/war', {
-        templateUrl: 'views/cardsGames/war.html',
-        controller: 'WarCtrl'
-      })
-      .when('/blackjack', {
-        templateUrl: 'views/cardsGames/blackJack.html',
-        controller: 'BlackJackCtrl'
-      })
-      .when('/yams', {
-        templateUrl: 'views/diceGames/yams.html',
-        controller: 'YamsCtrl'
-      })*/
       .when('/patch-note', {
         templateUrl: 'views/pages/patch-note.html'
       })

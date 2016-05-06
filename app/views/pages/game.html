@@ -6,9 +6,7 @@
       Error while loading Game, please go back on home and retry
     </div>
     <div ng-show="!errorLoading">
-      <div ng-show="rulePage">
-        {{game.rule}}
-      </div>
+      <div ng-show="rulePage" ng-bind-html="game.rule"></div>
       <div ng-show="gamePage">
         <div ng-include="gameViewUrl"></div>
       </div>
