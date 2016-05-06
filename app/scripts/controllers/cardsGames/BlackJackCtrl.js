@@ -7,13 +7,14 @@
  * Created by mbibos on 10/03/15.
  */
 
-var BlackJackCtrl = function ($scope) {
+var BlackJackCtrl = function ($scope, $rootScope, sharedService, localStorageService) {
 
   /*===============================*/
   /*======scope variables==========*/
   /*===============================*/
 
   //scope variable declared here
+  $scope.game;
 
 
   /*========================================*/
@@ -21,6 +22,7 @@ var BlackJackCtrl = function ($scope) {
   /*========================================*/
 
   //scope variables init here;
+  $scope.game = {};
 
   /*========================================*/
   /*======== init scope functions ==========*/
@@ -40,6 +42,17 @@ var BlackJackCtrl = function ($scope) {
   /*======scope functions==========*/
   /*===============================*/
 
+  if (localStorageService.get("currentGame")) {
+    $scope.game = localStorageService.get("currentGame");
+    if ($scope.game.name.toLowerCase() === "black jack") {
+      $rootScope.errorLoading = false;
+      sharedService.setPageTitle("War battle Card Game");
+    } else {
+      $rootScope.errorLoading = true;
+    }
+  }
+
+
 };
 
-angular.module('dashGameApp').controller('BlackJackCtrl', ['$scope', BlackJackCtrl]);
+angular.module('dashGameApp').controller('BlackJackCtrl', ['$scope', '$rootScope', 'sharedService', 'localStorageService', BlackJackCtrl]);

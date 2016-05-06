@@ -1,0 +1,19 @@
+<div class="game-navigation" ng-controller="NavigationCtrl">
+  <div class="nav-items">
+    <div class="nav-item back-btn" ng-click="backHome()">
+      <div class="nav-content">
+        <i class="fa fa-home"></i> Back
+      </div>
+    </div>
+    <div class="nav-item nav-btn" ng-click="showGamePage()" ng-class="gameSelected ? 'selected' : ''">
+      <div class="nav-content">
+        <i class="fa fa-gamepad"></i> Game
+      </div>
+    </div>
+    <div class="nav-item nav-btn" ng-click="showRulePage()" ng-class="ruleSelected ? 'selected' : ''">
+      <div class="nav-content">
+        <i class="fa fa-book"></i> Rules
+      </div>
+    </div
+  </div>
+</div>

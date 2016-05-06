@@ -36,6 +36,7 @@ var MainCtrl = function ($scope, $location, mainService, sharedService, localSto
   //initialization of scope function (throw "empty")
   $scope.initGames = function () { throw "Empty !"; };
   $scope.loadGame = function () { throw "Empty !"; };
+  $scope.backHome = function () { throw "Empty !"; };
 
 
   /*===============================*/
@@ -72,8 +73,14 @@ var MainCtrl = function ($scope, $location, mainService, sharedService, localSto
   };
 
   $scope.loadGame = function (game) {
-    $location.path('/' + game.endpoint);
+    // $location.path('/' + game.endpoint);
+    $location.path('/game');
+    localStorageService.set("currentGame", game);
   };
+
+  $scope.backHome = function () {
+    $location.path('/');
+  }
 
   $scope.$on("games_initialized", function (e, games) {
     $scope.allGames = games;
@@ -85,6 +92,7 @@ var MainCtrl = function ($scope, $location, mainService, sharedService, localSto
     setDisplayGames(gameType);
   });
 
+  sharedService.setPageTitle("Home");
   $scope.initGames();
   localStorageService.set("selectedGameType", "Card");
 };

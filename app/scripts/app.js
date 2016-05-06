@@ -14,9 +14,13 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/cardbattle', {
-        templateUrl: 'views/cardsGames/cardBattle.html',
-        controller: 'CardBattleCtrl'
+      .when('/game', {
+        templateUrl: 'views/game.html',
+        controller: 'GameCtrl'
+      })
+      /*.when('/war', {
+        templateUrl: 'views/cardsGames/war.html',
+        controller: 'WarCtrl'
       })
       .when('/blackjack', {
         templateUrl: 'views/cardsGames/blackJack.html',
@@ -25,7 +29,7 @@ angular
       .when('/yams', {
         templateUrl: 'views/diceGames/yams.html',
         controller: 'YamsCtrl'
-      })
+      })*/
       .when('/patch-note', {
         templateUrl: 'views/pages/patch-note.html'
       })

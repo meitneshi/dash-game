@@ -2,7 +2,8 @@
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
-@import 'vars.scss';
+@import "vars.scss";
+@import "mixins.scss";
 
 .menu {
   background-color: $item_background_color;
@@ -17,10 +18,14 @@
 }
 
 .menu-item {
+  color: $main_text_color;
   min-height: 50px;
   font-size: $menu_font_size;
   text-align: center;
   background-color: $menu_item_background_color;
+  @include border-radius-minimal(2px);
+  border-top: solid $item_delimiter_color_light 2px;
+  border-bottom: solid $item_delimiter_color_light 2px;
   margin: 10px;
 }
 
@@ -31,7 +36,8 @@
 
 .selected {
   background-color: $menu_item_selected_background_color;
-  border: solid $item_delimiter_color 1px;
+  color: $menu_item_selected_text_color;
+  @include box-shadow(4px, 4px, 2px, -2px, #000);
 }
 
 .selected:hover {

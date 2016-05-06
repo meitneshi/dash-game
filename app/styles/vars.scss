@@ -1,22 +1,27 @@
 //size
 $header_height: 75px;
 $menu_font_size: 30px;
+$navigation_height: 50px;
 
 //colors
 $item_background_color: #663300;
 $item_delimiter_color: #ff8000;
 $item_delimiter_color_light: #804000;
 
-$game_card_background: #331a00;
-$game_card_background_light: #4d2600;
+$game_card_background: #1a0d00; //#331a00;
+$game_card_background_light: #331a00;
 $game_card_shadow: #ffa64d;
 
-$menu_item_background_color: #994d00;
-$menu_item_hover_background_color: #b35900;
-$menu_item_selected_background_color: #e67300;
+$menu_item_background_color: #331a00; //#994d00;
+$menu_item_hover_background_color: #4d2600;
+$menu_item_selected_background_color: #804000;
+$menu_item_selected_text_color: #ffd9b3;
 
 $main_text_color: #ffbf80;
 
 $white: #fff;
 $red_disable: #e60000;
 $green_able: #009900;
+
+$red: #990000;
+$dark_red: #660000;

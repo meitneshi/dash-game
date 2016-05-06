@@ -1,0 +1,74 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+@import "vars.scss";
+@import "mixins.scss";
+
+.game-navigation {
+  position: fixed;
+  top: $header_height;
+  left: 150px;
+  right: 150px;
+  height: $navigation_height;
+  margin: 10px 0px 10px 0px;
+  background-color: $item_background_color;
+  border-top: solid $item_delimiter_color 2px;
+  border-bottom: solid $item_delimiter_color 2px;
+}
+
+.nav-items {
+  height: 100%;
+  display: inline-flex;
+}
+
+.nav-item {
+  padding-left: 10px !important;
+  padding-right:10px !important;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+}
+
+.nav-content {
+  font-size: 20px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.back-btn {
+  color: $main_text_color;
+  width: 100px;
+  background-color: $dark_red;
+  border:solid $red 2px;
+  margin-right: 5px;
+}
+
+.back-btn:hover {
+  background-color: $red;
+}
+
+.nav-btn {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: $main_text_color;
+  background-color: $menu_item_background_color;
+}
+
+.nav-btn:hover {
+  background-color:$menu_item_hover_background_color;
+}
+
+.selected {
+  background-color: $menu_item_selected_background_color;
+  border-bottom: solid #000 2px;
+}
+
+.selected:hover {
+  background-color: $menu_item_selected_background_color;
+}

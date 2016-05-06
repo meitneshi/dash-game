@@ -25,6 +25,19 @@ body {
   margin: 10px 0px 10px 10px;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
+  overflow-y:scroll;
+}
+
+.game-container {
+  position: fixed;
+  top:$header_height + $navigation_height;
+  left: 150px;
+  right: 150px;
+  bottom: 50px;
+  margin: 10px 0px 10px 0px;
+  overflow-y:scroll;
+  border-bottom: solid $item_delimiter_color 2px;
+  background-color: $white;
 }
 
 .cards-container {

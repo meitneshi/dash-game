@@ -1,20 +1,26 @@
 [
   {
     "name": "War",
-    "endpoint": "cardbattle",
+    "endpoint": "war",
     "type": "Card",
     "soloGame": true,
     "localMultiplayer": false,
     "iaAvailable": true,
-    "icon": "card_battle_icon.png"
+    "icon": "war_icon.png",
+    "minPlayer": 1,
+    "maxPlayer": 2,
+    "rule": "Big Text For Rules"
   },{
     "name": "Black Jack",
-    "endpoint": "blackjack",
+    "endpoint": "blackJack",
     "type": "Card",
     "soloGame": false,
     "localMultiplayer": true,
     "iaAvailable": false,
-    "icon": "black_jack_icon.png"
+    "icon": "black_jack_icon.png",
+    "minPlayer": 1,
+    "maxPlayer": 4,
+    "rule": "Big Text For Rules"
   },{
     "name": "Yam's",
     "endpoint": "yams",
@@ -22,6 +28,9 @@
     "soloGame": true,
     "localMultiplayer": true,
     "iaAvailable": false,
-    "icon": "yams-icon.png"
+    "icon": "yams-icon.png",
+    "minPlayer": 1,
+    "maxPlayer": 6,
+    "rule": "Big Text For Rules"
   }
 ]
