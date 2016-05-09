@@ -25,7 +25,7 @@ body {
   margin: 10px 0px 10px 10px;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
-  overflow-y:scroll;
+  overflow-y:auto;
 }
 
 .game-container {
@@ -35,9 +35,8 @@ body {
   right: 150px;
   bottom: 50px;
   margin: 10px 0px 10px 0px;
-  overflow-y:scroll;
+  overflow-y:auto;
   border-bottom: solid $item_delimiter_color 2px;
-  background-color: $white;
 }
 
 .cards-container {
