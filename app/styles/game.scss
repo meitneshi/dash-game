@@ -13,3 +13,14 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   padding: 25px 50px 25px 50px;
   background-color: $white;
 }
+
+.game-container {
+  position: fixed;
+  top:$header_height + $navigation_height;
+  left: 150px;
+  right: 150px;
+  bottom: 50px;
+  margin: 10px 0px 10px 0px;
+  overflow-y:auto;
+  border-bottom: solid $item_delimiter_color 2px;
+}

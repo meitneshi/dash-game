@@ -6,7 +6,7 @@
 
 .footer {
   background-color: $item_background_color;
-  position:fixed;
+  position:fixed; 
   bottom:0;
   left:150px;
   right:150px;
@@ -25,4 +25,10 @@
 
 a {
   font-weight: bold;
+}
+
+@media(max-width: $width_limit_medium_small) {
+  .footer {
+    display: none;
+  }
 }

@@ -12,7 +12,7 @@
   margin: 10px 10px 10px 0px;
   left: 150px;
   bottom: 50px;
-  width:300px;
+  width: $large_menu_width;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
 }
@@ -42,4 +42,22 @@
 
 .selected:hover {
   background-color: $menu_item_selected_background_color;
+}
+
+@media(max-width: $width_limit_wide_medium) {
+  .menu {
+    width: $small_menu_width;
+  }
+
+  .menu-item {
+    min-height: 30px;
+    font-size: $menu_small_font_size;
+  }
+}
+
+@media(max-width: $width_limit_medium_small) {
+  //afficher le menu en sous forme d'onglet
+  .menu {
+    display: none;
+  }
 }
