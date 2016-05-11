@@ -10,7 +10,7 @@
   position: fixed;
   top: $header_height;
   margin: 10px 10px 10px 0px;
-  left: 150px;
+  left: $large_border_margin;
   bottom: 50px;
   width: $large_menu_width;
   border-left:solid $item_delimiter_color 2px;
@@ -50,14 +50,31 @@
   }
 
   .menu-item {
-    min-height: 30px;
+    min-height: 40px;
     font-size: $menu_small_font_size;
   }
 }
 
 @media(max-width: $width_limit_medium_small) {
-  //afficher le menu en sous forme d'onglet
   .menu {
-    display: none;
+    left: $small_border_margin;
+    bottom: $small_border_margin;
+    top: $small_header_height;
+    width: $extra_small_menu_width;
+  }
+
+  .menu-item {
+    min-height: 70px;
+    margin: 0px !important;
+  }
+
+  .menu-label {
+    -webkit-transform:rotate(270deg);
+    -moz-transform:rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform:rotate(270deg);
+    transform: rotate(270deg);
+    white-space:nowrap;
+    margin-top: 20px;
   }
 }

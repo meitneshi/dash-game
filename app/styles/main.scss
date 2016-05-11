@@ -20,13 +20,17 @@ body {
   background-color: $item_background_color;
   position: fixed;
   top: $header_height;
-  left: 150px + $large_menu_width;
-  right:150px;
+  left: $large_border_margin + $large_menu_width;
+  right: $large_border_margin;
   bottom: 50px;
   margin: 10px 0px 10px 10px;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
   overflow-y:auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cards-container {
@@ -119,14 +123,19 @@ body {
 
 @media(max-width: $width_limit_wide_medium) {
   .main-container {
-    left: 150px + $small_menu_width;
-    right:150px;
+    left: $large_border_margin + $small_menu_width;
+    right:$large_border_margin;
   }
 }
 
 @media(max-width: $width_limit_medium_small) {
   // redo the displaying of games in case of small screen
   .main-container {
-    display: none;
+    left: $small_border_margin + $extra_small_menu_width;
+    right: $small_border_margin;
+    top: $small_header_height;
+    bottom: $small_border_margin;
+    margin-left: -2px !important;
+    z-index: -100;
   }
 }

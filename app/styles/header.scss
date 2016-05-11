@@ -8,8 +8,8 @@
   background-color: $item_background_color;
   position:fixed;
   top:0;
-  left:150px;
-  right:150px;
+  left:$large_border_margin;
+  right:$large_border_margin;
   height:$header_height;
   color: $main_text_color;
   font-weight: bold;
@@ -26,8 +26,8 @@
 @media(max-width: $width_limit_medium_small) {
   .header {
     height: $small_header_height;
-    left: 10px;
-    right: 10px;
+    left: $small_border_margin;
+    right: $small_border_margin;
 
     h1 {
       font-size: 20px;

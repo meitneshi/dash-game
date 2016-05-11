@@ -2,15 +2,21 @@
 $header_height: 75px;
 $small_header_height: 50px;
 $menu_font_size: 30px;
-$menu_small_font_size: 15px;
+$menu_small_font_size: 20px;
 $navigation_height: 50px;
 
-$large_menu_width: 300px;
-$small_menu_width: 150px;
+$footer_height: 50px;
 
-//media queries value
+$large_menu_width: 300px;
+$small_menu_width: 200px;
+$extra_small_menu_width: 40px;
+
+$large_border_margin: 150px;
+$small_border_margin: 10px;
+
+//media queries value switch
 $width_limit_wide_medium: 1000px;
-$width_limit_medium_small: 670px;
+$width_limit_medium_small: 690px;
 
 //colors
 $item_background_color: #663300;

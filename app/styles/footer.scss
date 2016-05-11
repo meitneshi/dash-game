@@ -6,11 +6,11 @@
 
 .footer {
   background-color: $item_background_color;
-  position:fixed; 
+  position:fixed;
   bottom:0;
-  left:150px;
-  right:150px;
-  height:50px;
+  left:$large_border_margin;
+  right:$large_border_margin;
+  height:$footer_height;
   border-top: solid $item_delimiter_color 2px;
   border-bottom: solid $item_delimiter_color 2px;
 }
