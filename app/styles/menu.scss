@@ -15,6 +15,7 @@
   width: $large_menu_width;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
+  overflow-y: auto;
 }
 
 .menu-item {
@@ -44,6 +45,7 @@
   background-color: $menu_item_selected_background_color;
 }
 
+//Responsive design medium-width screen
 @media(max-width: $width_limit_wide_medium) {
   .menu {
     width: $small_menu_width;
@@ -55,6 +57,7 @@
   }
 }
 
+//Responsive design small-width screen
 @media(max-width: $width_limit_medium_small) {
   .menu {
     left: $small_border_margin;
