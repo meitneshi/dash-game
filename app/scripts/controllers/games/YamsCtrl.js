@@ -7,7 +7,7 @@
  * Created by mbibos on 10/03/15.
  */
 
-var YamsCtrl = function ($scope, $rootScope, sharedService, localStorageService) {
+var YamsCtrl = function ($scope, sharedService, localStorageService) {
 
   /*===============================*/
   /*======scope variables==========*/
@@ -42,15 +42,7 @@ var YamsCtrl = function ($scope, $rootScope, sharedService, localStorageService)
   /*======scope functions==========*/
   /*===============================*/
 
-  if (localStorageService.get("currentGame")) {
-    $scope.game = localStorageService.get("currentGame");
-    if ($scope.game.name.toLowerCase() === "yam's") {
-      $rootScope.errorLoading = false;
-      sharedService.setPageTitle("Yam's");
-    } else {
-      $rootScope.errorLoading = true;
-    }
-  }
+  $scope.game = localStorageService.get("currentGame");
 };
 
-angular.module('dashGameApp').controller('YamsCtrl', ['$scope', '$rootScope', 'sharedService', 'localStorageService', YamsCtrl]);
+angular.module('dashGameApp').controller('YamsCtrl', ['$scope', 'sharedService', 'localStorageService', YamsCtrl]);

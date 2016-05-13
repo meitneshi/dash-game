@@ -1,5 +1,20 @@
 <div ng-controller="WarCtrl">
-  <h1>Card Battle</h1>
+  <div class="war-game-container">
+    <div class="settings-btn">
+      <div class="btn btn-success" ng-click="initGame(0)">Randomize Distribution</div>
+      <div class="btn btn-success" ng-click="initGame(1)">Equal Distribution</div>
+    </div>
 
-  <pre>{{cards | json}}</pre>
+    <div class="war-board" ng-if="warInitialized">
+      <div class="winner-message" ng-if="gameEnd">Game End a Player win</div>
+      <div class="btn btn-success" ng-click="computeTurn()" ng-if="!gameEnd">Draw a card</div>
+      <div class="btn btn-danger" ng-click="reset()" ng-if="gameEnd">Reset Game</div>
+      <!-- Automatic End can case very very long loop due to big pile of card, expecially when the game is equally distributed -->
+      <!-- <div class="btn btn-success" ng-click="automaticEnd()">Automatic End</div> -->
+      1 : <pre>{{player1Deck.length | json}}</pre>
+      2 : <pre>{{player2Deck.length | json}}</pre>
+      Turn : {{turnNumber}} <br>
+      War : {{warNumber}}
+    </div>
+  </div>
 </div>

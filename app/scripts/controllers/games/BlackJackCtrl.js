@@ -7,7 +7,7 @@
  * Created by mbibos on 10/03/15.
  */
 
-var BlackJackCtrl = function ($scope, $rootScope, sharedService, localStorageService) {
+var BlackJackCtrl = function ($scope, sharedService, localStorageService) {
 
   /*===============================*/
   /*======scope variables==========*/
@@ -42,17 +42,8 @@ var BlackJackCtrl = function ($scope, $rootScope, sharedService, localStorageSer
   /*======scope functions==========*/
   /*===============================*/
 
-  if (localStorageService.get("currentGame")) {
-    $scope.game = localStorageService.get("currentGame");
-    if ($scope.game.name.toLowerCase() === "black jack") {
-      $rootScope.errorLoading = false;
-      sharedService.setPageTitle("War battle Card Game");
-    } else {
-      $rootScope.errorLoading = true;
-    }
-  }
-
+  $scope.game = localStorageService.get("currentGame");
 
 };
 
-angular.module('dashGameApp').controller('BlackJackCtrl', ['$scope', '$rootScope', 'sharedService', 'localStorageService', BlackJackCtrl]);
+angular.module('dashGameApp').controller('BlackJackCtrl', ['$scope', 'sharedService', 'localStorageService', BlackJackCtrl]);
