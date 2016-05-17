@@ -10,13 +10,51 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "mixins.scss";
 
 .war-game-container {
-  background-color: $white;
+  position: fixed;
+  z-index: -1000;
+  top: $header_height + $navigation_height;
+  bottom: $footer_height;
+  left: $large_border_margin;
+  right: $large_border_margin;
+  background-color: $item_background_color;
+  margin: 10px 0px 5px 0px;
 }
 
-.settings-btn {
+.cmd-btn {
   background-color: #aa00aa;
+  position: fixed;
+  top: $header_height + $navigation_height;
+  bottom: $footer_height;
+  left: $large_border_margin;
+  width: 200px;
+  border-left:solid $item_delimiter_color 2px;
+  border-right:solid $item_delimiter_color 2px;
+  margin: 10px 0px 5px 0px;
+  overflow-y:auto;
 }
 
 .war-board {
   background-color: #aa0000;
+  position: fixed;
+  top: $header_height + $navigation_height;
+  bottom: $footer_height;
+  right: $large_border_margin + 200px;
+  left: $large_border_margin + 200px;
+  border-left:solid $item_delimiter_color 2px;
+  border-right:solid $item_delimiter_color 2px;
+  margin: 10px 5px 5px 5px;
+  overflow-y:auto;
+}
+
+.stats-board {
+  background-color: #00aaaa;
+  position: fixed;
+  top: $header_height + $navigation_height;
+  bottom: $footer_height;
+  right: $large_border_margin;
+  width: 200px;
+  border-left:solid $item_delimiter_color 2px;
+  border-right:solid $item_delimiter_color 2px;
+  margin: 10px 0px 5px 0px;
+  overflow-y:auto;
 }
