@@ -54,7 +54,6 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   $scope.initCards = function () { throw "Empty !"; };
   $scope.initGame = function () { throw "Empty !"; };
   $scope.computeTurn = function () { throw "Empty !"; };
-  $scope.automaticEnd = function () { throw "Empty !"; };
   $scope.reset = function () { throw "Empty !"; };
 
 
@@ -62,7 +61,9 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   /*======private variables========*/
   /*===============================*/
 
-  //Put here private variable
+  /**
+   * Distribute Card equally (each color to each player) or randomly (call to services)
+   */
   var distributeCard = function (equaly) {
     $scope.player1Deck = [];
     $scope.player2Deck = [];
@@ -75,31 +76,22 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
         }
       });
     } else {
-      $scope.cards = shuffleDeck($scope.cards);
-      var giveToPlayer1 = true;
-      for (var i = 0 ; i < $scope.cards.length ; i++) {
-        (giveToPlayer1) ? $scope.player1Deck.push($scope.cards[i]) : $scope.player2Deck.push($scope.cards[i]);
-        giveToPlayer1 = !giveToPlayer1;
-      }
+      $scope.cards = cardService.shuffleDeck($scope.cards);
+      cardService.distributeCards([$scope.player1Deck, $scope.player2Deck], $scope.cards);
     }
   };
 
+  /**
+   * Shuffle All player decks
+   */
   var shufflePlayerDeck = function () {
-    $scope.player1Deck = shuffleDeck($scope.player1Deck);
-    $scope.player2Deck = shuffleDeck($scope.player2Deck);
+    $scope.player1Deck = cardService.shuffleDeck($scope.player1Deck);
+    $scope.player2Deck = cardService.shuffleDeck($scope.player2Deck);
   };
 
-  var shuffleDeck = function(deck) {
-    var j, x, i;
-    for (i = deck.length; i; i -= 1) {
-        j = Math.floor(Math.random() * i);
-        x = deck[i - 1];
-        deck[i - 1] = deck[j];
-        deck[j] = x;
-    }
-    return deck;
-  };
-
+  /**
+   * Initialize the special Rules for War
+   */
   var initSpecialRule = function () {
     for (var i = 0 ; i < $scope.cards.length ; i++) {
       if ($scope.cards[i].value === 1) {
@@ -111,6 +103,9 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     }
   };
 
+  /**
+   * Deal with the war context during the game
+   */
   var computeWarContext = function () {
     $scope.warNumber ++;
     //if one of a player does not have any card to complete the war he loose
@@ -118,15 +113,18 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
       $scope.gameEnd = true;
     } else {
       //play a card hidden
-      $scope.cardInPool.push($scope.player1Deck[0], $scope.player2Deck[0]);
-      $scope.player1Deck.shift();
-      $scope.player2Deck.shift();
+      var hiddenPlayer1Card = cardService.drawCard($scope.player1Deck);
+      var hiddenPlayer2Card = cardService.drawCard($scope.player2Deck);
+      $scope.cardInPool.push(hiddenPlayer1Card, hiddenPlayer2Card);
 
       //play another card
       $scope.computeTurn();
     }
   };
 
+  /**
+   * Compute the victory of a turn
+   */
   var computeVictoryOfTurn = function () {
     if ($scope.cardPlayedByPlayer1.value > $scope.cardPlayedByPlayer2.value) {
       //player 1 win Add card in pool to deck of player 1
@@ -145,6 +143,9 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     computeVictory();
   };
 
+  /**
+   * Compute the Victory of the game
+   */
   var computeVictory = function () {
     //Victory if one player have all the cards
     if ($scope.player1Deck.length === $scope.cards.length || $scope.player2Deck.length === $scope.cards.length) {
@@ -152,6 +153,9 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     }
   };
 
+  /**
+   * Initialize the value for war initialization
+   */
   var initializeValue = function () {
     $scope.gameEnd = false;
     $scope.warNumber = 0;
@@ -163,10 +167,16 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   /*======scope functions==========*/
   /*===============================*/
 
+  /**
+   * Initialization of the cards for the game
+   */
   $scope.initCards = function () {
     cardService.initCards($scope);
   };
 
+  /**
+   * Init the game : distribute the card, shuffle the players deck and initializ game value
+   */
   $scope.initGame = function (gameType) {
     switch (gameType) {
       //gameType === 0 => random repartition of cards
@@ -187,18 +197,19 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     initializeValue();
   };
 
+  /**
+   * Process the turn
+   */
   $scope.computeTurn = function () {
     if($scope.player1Deck.length === 0 || $scope.player2Deck.length === 0) {
       $scope.gameEnd = true;
     } else {
       //draw cards
-      $scope.cardPlayedByPlayer1 = $scope.player1Deck[0];
-      $scope.cardPlayedByPlayer2 = $scope.player2Deck[0];
+      $scope.cardPlayedByPlayer1 = cardService.drawCard($scope.player1Deck);
+      $scope.cardPlayedByPlayer2 = cardService.drawCard($scope.player2Deck);
 
-      //remove card from each deck and put it in pool
+      //put each card drawn in the pool in pool
       $scope.cardInPool.push($scope.cardPlayedByPlayer1, $scope.cardPlayedByPlayer2);
-      $scope.player1Deck.shift();
-      $scope.player2Deck.shift();
 
       //compute result of turn
       if ($scope.cardPlayedByPlayer1.value === $scope.cardPlayedByPlayer2.value) {
@@ -207,15 +218,11 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
         computeVictoryOfTurn();
       }
     }
-  }
+  };
 
-  $scope.automaticEnd = function () {
-    //TODO: or not ot avoid too long loop;
-    while (!$scope.gameEnd) {
-      $scope.computeTurn();
-    }
-  }
-
+  /**
+   * Reset the game
+   */
   $scope.reset = function () {
     $scope.warInitialized = false;
     $scope.player1Deck = [];
@@ -226,14 +233,19 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     $scope.turnNumber = 0;
     $scope.warNumber = 0;
     $scope.gameEnd = false;
-  }
+  };
 
+  /**
+   * Listener when the cards are loaded from the service
+   */
   $scope.$on('cards_loaded', function (e, cards)  {
     $scope.cards = cards;
     //For War game, the Ace have a superior value to the King, set it here
     initSpecialRule();
   });
 
+
+  //Initialization
   $scope.game = localStorageService.get("currentGame");
   $scope.initCards();
 };
