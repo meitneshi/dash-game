@@ -20,8 +20,8 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   margin: 10px 0px 5px 0px;
 }
 
-.cmd-btn {
-  background-color: #aa00aa;
+.cmd-board {
+  background-color: $item_background_color;
   position: fixed;
   top: $header_height + $navigation_height;
   bottom: $footer_height;
@@ -31,10 +31,44 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   border-right:solid $item_delimiter_color 2px;
   margin: 10px 0px 5px 0px;
   overflow-y:auto;
+
+  .button {
+    text-align: center;
+    line-height: 100%;
+    min-height: 40px;
+    font-size: 15px;
+    color: $main_text_color;
+    @include border-radius-minimal(2px);
+    border-top: solid $item_delimiter_color_light 2px;
+    border-bottom: solid $item_delimiter_color_light 2px;
+    margin: 10px;
+    padding-top: 8px;
+  }
+  .button:hover {
+    cursor: pointer;
+  }
+  .btn-std {
+    background-color: $menu_item_background_color;
+  }
+  .btn-std:hover {
+    background-color: $menu_item_hover_background_color;
+  }
+  .btn-play {
+    background-color: $dark_green;
+  }
+  .btn-play:hover {
+    background-color: $green_able;
+  }
+  .btn-red {
+    background-color: $dark_red;
+  }
+  .btn-red:hover {
+    background-color: $red;
+  }
 }
 
 .war-board {
-  background-color: #aa0000;
+  background-color: $item_background_color;
   position: fixed;
   top: $header_height + $navigation_height;
   bottom: $footer_height;
@@ -47,7 +81,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 
 .stats-board {
-  background-color: #00aaaa;
+  background-color: $item_background_color;
   position: fixed;
   top: $header_height + $navigation_height;
   bottom: $footer_height;
@@ -57,4 +91,16 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   border-right:solid $item_delimiter_color 2px;
   margin: 10px 0px 5px 0px;
   overflow-y:auto;
+  .stat-title {
+    text-align: center;
+    h1 {
+      color: $main_text_color;
+    }
+  }
+  .stat-content {
+    color: $main_text_color;
+    .stat {
+      margin-left:5px;
+    }
+  }
 }
