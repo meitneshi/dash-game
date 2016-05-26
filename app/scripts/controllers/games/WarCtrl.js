@@ -26,6 +26,11 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   $scope.turnNumber;
   $scope.warNumber;
   $scope.gameEnd;
+  $scope.player1CardImgName;
+  $scope.player2CardImgName;
+  $scope.player1Score;
+  $scope.player2Score;
+  $scope.poolScore;
 
 
   /*========================================*/
@@ -44,6 +49,11 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   $scope.turnNumber = 0;
   $scope.warNumber = 0;
   $scope.gameEnd = false;
+  $scope.player1CardImgName = null;
+  $scope.player2CardImgName = null;
+  $scope.player1Score = 0;
+  $scope.player2Score = 0;
+  $scope.poolScore = 0;
 
 
   /*========================================*/
@@ -106,8 +116,10 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   /**
    * Deal with the war context during the game
    */
-  var computeWarContext = function () {
+  var computeWarContext = function (poolScore) {
     $scope.warNumber ++;
+    poolScore++;
+    $scope.poolScore = poolScore;
     //if one of a player does not have any card to complete the war he loose
     if ($scope.player1Deck.length === 1 || $scope.player2Deck.length === 1) {
       $scope.gameEnd = true;
@@ -125,20 +137,25 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   /**
    * Compute the victory of a turn
    */
-  var computeVictoryOfTurn = function () {
+  var computeVictoryOfTurn = function (poolScore) {
     if ($scope.cardPlayedByPlayer1.value > $scope.cardPlayedByPlayer2.value) {
       //player 1 win Add card in pool to deck of player 1
       for(var i = 0 ; i < $scope.cardInPool.length ; i++) {
         $scope.player1Deck.push($scope.cardInPool[i]);
       }
+      //add poolScore to player1Score
+      $scope.player1Score += poolScore;
     } else {
       //player 2 win Add card in pool to deck of player 2
       for(var i = 0 ; i < $scope.cardInPool.length ; i++) {
         $scope.player2Deck.push($scope.cardInPool[i]);
       }
+      //add poolScore to player2Score
+      $scope.player2Score += poolScore;
     }
     //reset pool
     $scope.cardInPool = [];
+    $scope.poolScore = 0;
     $scope.turnNumber ++;
     computeVictory();
   };
@@ -147,8 +164,8 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
    * Compute the Victory of the game
    */
   var computeVictory = function () {
-    //Victory if one player have all the cards
-    if ($scope.player1Deck.length === $scope.cards.length || $scope.player2Deck.length === $scope.cards.length) {
+    //Victory if one player have 100 points
+    if ($scope.player1Score >= 10 || $scope.player2Score >= 10) {
       $scope.gameEnd = true;
     }
   };
@@ -161,6 +178,15 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     $scope.warNumber = 0;
     $scope.turnNumber = 0;
   }
+
+  /**
+   * Compute the image name associated to a card
+   * The name is build from the label and symbol like "label_symbol.png" all in lower case
+   * Exxample : "ace_clubs.png", "2_diamondss.png", ...
+   */
+   var computeCardImgName = function (card) {
+     return card.label.toLowerCase() + "_" + card.symbol.toLowerCase() + ".png";
+   }
 
 
   /*===============================*/
@@ -204,18 +230,26 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     if($scope.player1Deck.length === 0 || $scope.player2Deck.length === 0) {
       $scope.gameEnd = true;
     } else {
+
+      //Add 1 in pool Score
+      $scope.poolScore++;
+
       //draw cards
       $scope.cardPlayedByPlayer1 = cardService.drawCard($scope.player1Deck);
       $scope.cardPlayedByPlayer2 = cardService.drawCard($scope.player2Deck);
+
+      //compute the name of the card to display the image
+      $scope.player1CardImgName = computeCardImgName($scope.cardPlayedByPlayer1);
+      $scope.player2CardImgName = computeCardImgName($scope.cardPlayedByPlayer2);
 
       //put each card drawn in the pool in pool
       $scope.cardInPool.push($scope.cardPlayedByPlayer1, $scope.cardPlayedByPlayer2);
 
       //compute result of turn
       if ($scope.cardPlayedByPlayer1.value === $scope.cardPlayedByPlayer2.value) {
-        computeWarContext();
+        computeWarContext($scope.poolScore);
       } else {
-        computeVictoryOfTurn();
+        computeVictoryOfTurn($scope.poolScore);
       }
     }
   };
@@ -233,6 +267,11 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     $scope.turnNumber = 0;
     $scope.warNumber = 0;
     $scope.gameEnd = false;
+    $scope.player1CardImgName = null;
+    $scope.player1CardImgName = null;
+    $scope.player1Score = 0;
+    $scope.player2Score = 0;
+    $scope.poolScore = 0;
   };
 
   /**

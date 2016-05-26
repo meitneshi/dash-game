@@ -11,21 +11,32 @@
       <div class="cards-board">
         <!-- Up Player board -->
         <div class="player-board top">
-          <div class="player-label">Player 1</div>
-          <div class="player-deck"><pre>{{player1Deck.length | json}}</pre></div>
+          <div class="player-label">Player 1 ({{player1Score}} point(s))</div>
+          <div class="player-deck">
+            <img src="images/cards/card_back.jpg">
+          </div>
 
         </div>
 
         <!-- Where the cards goes -->
         <div class="war-zone">
-          <div class="played-card"><pre>{{cardPlayedByPlayer1 | json}}</pre></div>
-          <div class="played-card"><pre>{{cardPlayedByPlayer2 | json}}</pre></div>
+          <div class="board-label">Turn : {{turnNumber}}<br>War : {{warNumber}}</div>
+          <div class="played-card player-1">
+            <img ng-src="images/cards/{{player1CardImgName}}" ng-show="player1CardImgName">
+            <!-- <pre>{{player1CardImgName | json}}</pre> -->
+          </div>
+          <div class="played-card player-2">
+            <img ng-src="images/cards/{{player2CardImgName}}" ng-show="player2CardImgName">
+            <!-- <pre>{{player2CardImgName | json}}</pre> -->
+          </div>
         </div>
 
         <!-- Down player board -->
         <div class="player-board bottom">
-          <div class="player-label">Player 2</div>
-          <div class="player-deck"><pre>{{player2Deck.length | json}}</pre></div>
+          <div class="player-label">Player 2 ({{player2Score}} point(s))</div>
+          <div class="player-deck">
+            <img src="images/cards/card_back.jpg">
+          </div>
         </div>
       </div>
       <!-- <div class="winner-message" ng-if="gameEnd">Game End a Player win</div> -->

@@ -100,7 +100,14 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
     .player-deck {
       height: 150px;
       width: 100px;
-      background-color: #000;
+    }
+
+    .board-label {
+      position: absolute;
+      left:25px;
+      font-size: 20px;
+      font-weight: bold;
+      color: $main_text_color;
     }
 
     .player-board {
@@ -113,6 +120,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .player-board.top {
       position: absolute;
       top: 10px;
@@ -138,8 +146,15 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
       .played-card {
         height: 150px;
         width:100px;
-        background-color: #f00;
         margin: auto 5px auto 5px;
+      }
+
+      .played-card.player-1 {
+        margin-top: 0px !important;
+      }
+
+      .played-card.player-2 {
+        margin-bottom: 0px !important;
       }
     }
   }
