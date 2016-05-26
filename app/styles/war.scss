@@ -70,37 +70,99 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 .war-board {
   background-color: $item_background_color;
   position: fixed;
+  min-width:900px;
+  min-height: 700px;
   top: $header_height + $navigation_height;
   bottom: $footer_height;
-  right: $large_border_margin + 200px;
+  right: $large_border_margin;
   left: $large_border_margin + 200px;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
   margin: 10px 5px 5px 5px;
   overflow-y:auto;
-}
+  overflow-x:auto;
+  .cards-board {
+    position: relative;
+    margin: 15px;
+    height:90%;
+    width:90%;
+    @include border-radius-minimal(50px);
+    background-color: $cards-board-color;
 
-.stats-board {
-  background-color: $item_background_color;
-  position: fixed;
-  top: $header_height + $navigation_height;
-  bottom: $footer_height;
-  right: $large_border_margin;
-  width: 200px;
-  border-left:solid $item_delimiter_color 2px;
-  border-right:solid $item_delimiter_color 2px;
-  margin: 10px 0px 5px 0px;
-  overflow-y:auto;
-  .stat-title {
-    text-align: center;
-    h1 {
+    .player-label {
+      position: absolute;
+      left:25px;
+      font-size: 25px;
+      font-weight: bold;
       color: $main_text_color;
     }
-  }
-  .stat-content {
-    color: $main_text_color;
-    .stat {
-      margin-left:5px;
+
+    .player-deck {
+      height: 150px;
+      width: 100px;
+      background-color: #000;
     }
+
+    .player-board {
+      margin: 10px auto 10px auto;
+      height: 140px;
+      width: 100%;
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .player-board.top {
+      position: absolute;
+      top: 10px;
+    }
+
+    .player-board.bottom {
+      position: absolute;
+      bottom: 10px;
+    }
+
+    .war-zone {
+      position: absolute;
+      top:160px;
+      bottom:160px;
+      margin: 10px auto 10px auto;
+      width: 100%;
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .played-card {
+        height: 150px;
+        width:100px;
+        background-color: #f00;
+        margin: auto 5px auto 5px;
+      }
+    }
+  }
+}
+
+.war-board-small {
+  display: none;
+}
+
+@media(max-width: $limit_width_war_game), (max-height: $limit_height_war_game) {
+  .war-board {
+    display:none;
+  }
+  .war-board-small {
+    margin: 10px 5px 5px 5px;
+    position: fixed;
+    top: $header_height + $navigation_height;
+    bottom: $footer_height;
+    right: $large_border_margin;
+    left: $large_border_margin + 200px;
+    font-size: 15px;
+    text-align: center;
+    color: $main_text_color;
+    display: block;
   }
 }
