@@ -31,6 +31,10 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   $scope.player1Score;
   $scope.player2Score;
   $scope.poolScore;
+  $scope.targetedScore;
+  $scope.winner;
+  $scope.player1Name;
+  $scope.player2Name;
 
 
   /*========================================*/
@@ -54,6 +58,10 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   $scope.player1Score = 0;
   $scope.player2Score = 0;
   $scope.poolScore = 0;
+  $scope.targetedScore = 10;
+  $scope.winner = null;
+  $scope.player1Name = "Player 1";
+  $scope.player2Name = "Player 2 (CPU)";
 
 
   /*========================================*/
@@ -163,10 +171,15 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   /**
    * Compute the Victory of the game
    */
+   //TODO : implement dynamic player name
   var computeVictory = function () {
-    //Victory if one player have 100 points
-    if ($scope.player1Score >= 10 || $scope.player2Score >= 10) {
+    //Victory if one player have the targeted score
+    if ($scope.player1Score >= $scope.targetedScore) {
       $scope.gameEnd = true;
+      $scope.winner = $scope.player1Name;
+    } else if ($scope.player2Score >= $scope.targetedScore) {
+      $scope.gameEnd = true;
+      $scope.winner = $scope.player1Name;
     }
   };
 
@@ -213,9 +226,9 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
       case 1:
         distributeCard(true);
         break;
-      //default behavior : equal repartition
+      //default behavior : random repartition
       default:
-        $scope.initGame(1);
+        $scope.initGame(0);
         break;
     }
     shufflePlayerDeck();

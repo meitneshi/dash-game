@@ -19,6 +19,28 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   background-color: $item_background_color;
   margin: 10px 0px 5px 0px;
 }
+.modal-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color:#000;
+  filter: opacity(0.95);
+  .modal-winner {
+    font-size: 18px;
+    @include border-radius-minimal(5px);
+    @include box-shadow(4px, 4px, 2px, -2px, #000);
+    height: 100px;
+    width: 300px;
+    text-align: center;
+    background-color: $white;
+    margin: 100px auto;
+    z-index:1500;
+  }
+  .reset-button {
+    margin-top:10px;
+  }
+}
 
 .cmd-board {
   background-color: $item_background_color;
@@ -67,6 +89,35 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   }
 }
 
+.settings {
+  background-color: $item_background_color;
+  position: fixed;
+  min-width:900px;
+  min-height: 700px;
+  top: $header_height + $navigation_height;
+  bottom: $footer_height;
+  right: $large_border_margin;
+  left: $large_border_margin + 200px;
+  border-left:solid $item_delimiter_color 2px;
+  border-right:solid $item_delimiter_color 2px;
+  margin: 10px 5px 5px 5px;
+  overflow-y:auto;
+  overflow-x:auto;
+  .player-settings {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 20px;
+    color: $main_text_color;
+  }
+  .player-input {
+    color:#000;
+    @include border-radius-minimal(2px);
+  }
+  .player-row {
+    margin:5px;
+  }
+}
+
 .war-board {
   background-color: $item_background_color;
   position: fixed;
@@ -110,6 +161,13 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
       color: $main_text_color;
     }
 
+    .back-img {
+      width: 100%;
+      height: 100%;
+      background:url("../images/games_icons/war_icon.png") no-repeat center center;
+      filter: opacity(0.5);
+    }
+
     .player-board {
       margin: 10px auto 10px auto;
       height: 140px;
@@ -144,17 +202,22 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
       justify-content: center;
 
       .played-card {
-        height: 150px;
-        width:100px;
+        height: 114px;
+        width:83px;
         margin: auto 5px auto 5px;
+        z-index: 5;
+        img {
+          display:block;
+          margin:auto;
+        }
       }
 
       .played-card.player-1 {
-        margin-top: 0px !important;
+        margin-top: 5px !important;
       }
 
       .played-card.player-2 {
-        margin-bottom: 0px !important;
+        margin-bottom: 5px !important;
       }
     }
   }
@@ -165,16 +228,17 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 }
 
 @media(max-width: $limit_width_war_game), (max-height: $limit_height_war_game) {
-  .war-board {
+  .war-board, .settings, .cmd-board {
     display:none;
   }
   .war-board-small {
     margin: 10px 5px 5px 5px;
+    padding-top: 25px;
     position: fixed;
     top: $header_height + $navigation_height;
     bottom: $footer_height;
     right: $large_border_margin;
-    left: $large_border_margin + 200px;
+    left: $large_border_margin;
     font-size: 15px;
     text-align: center;
     color: $main_text_color;
