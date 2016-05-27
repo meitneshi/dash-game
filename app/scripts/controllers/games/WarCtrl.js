@@ -171,7 +171,6 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   /**
    * Compute the Victory of the game
    */
-   //TODO : implement dynamic player name
   var computeVictory = function () {
     //Victory if one player have the targeted score
     if ($scope.player1Score >= $scope.targetedScore) {
