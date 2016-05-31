@@ -1,58 +1,57 @@
 <div ng-controller="WarCtrl">
   <div class="war-game-container">
-    <div class="cmd-board">
-      <div class="button btn-std" ng-click="initGame(0)">Randomize Distribution</div>
-      <div class="button btn-std" ng-click="initGame(1)">Equal Distribution</div>
-      <div class="button btn-play" ng-click="computeTurn()" ng-if="!gameEnd && warInitialized">Draw a card</div>
-    </div>
+    <div class="settings" ng-show=!gameData.warInitialized>
+      <div class="select-number-player">
+        <select ng-model="gameData.nbPlayers">
+          <option value=0 selected>--Select the number of players--</option>
+          <option ng-repeat="nbPlayer in game.possibleNbNonAIPLayers" value="{{nbPlayer}}">{{nbPlayer}}</option>
+        </select>
+        <div class="action">
+          <div class="btn btn-success" ng-click="initPlayers()">Set Number of players</div>
+        </div>
+      </div>
 
-    <div class="settings" ng-show="!warInitialized">
-      <div class="player-settings">
+      <div class="player-settings" ng-show="players.length !== 0">
         <div class="row player-row">
           Set here the name of the players
         </div>
         <br>
-        <div class="row player-row">
+        <div class="row player-row" ng-repeat="player in players">
           <div class="col-md-3"></div>
           <div class="col-md-2">
-            Player 1:
+            Player {{$index+1}}:
           </div>
           <div class="col-md-4 player-input">
-            <input type="text" ng-model="player1Name">
+            <input type="text" ng-model="player.name">
           </div>
           <div class="col-md-3"></div>
         </div>
-        <div class="row player-row">
-          <div class="col-md-3"></div>
-          <div class="col-md-2">
-            Player 2 (AI):
-          </div>
-          <div class="col-md-4 player-input">
-            <input type="text" ng-model="player2Name">
-          </div>
-          <div class="col-md-3"></div>
-        </div>
+
         <div class="row player-row">
           <div class="col-md-3"></div>
           <div class="col-md-2">
             Max Score:
           </div>
           <div class="col-md-4 player-input">
-            <input type="number" ng-model="targetedScore">
+            <input type="number" ng-model="gameData.targetedScore">
           </div>
           <div class="col-md-3"></div>
+        </div>
+
+        <div class="action">
+          <div class="btn btn-success" ng-click="distribute()">Validate Settings and Distribute</div>
         </div>
       </div>
     </div>
 
-    <div class="war-board" ng-if="warInitialized">
+    <div class="war-board" ng-if="gameData.warInitialized">
       <div class="cards-board">
 
         <!-- CUSTOM MODAL OF WINNER -->
-        <div class="modal-content" ng-show="gameEnd">
+        <div class="modal-content" ng-show="gameData.gameEnd">
           <div class="modal-winner">
-            Congratulation <strong>{{winner}}</strong>,<br>
-            You Win the round in <strong>{{turnNumber}} turns</strong> !
+            Congratulation <strong>{{gameData.winner.name}}</strong>,<br>
+            You Win the round in <strong>{{gameData.turnNumber}} turns</strong> !
             <div class="reset-button">
               <div class="btn btn-danger" ng-click="reset()">New Game</div>
             </div>
@@ -61,35 +60,34 @@
 
         <div class="back-img"></div>
 
-        <!-- Up Player board -->
+        <!-- Up Player board In this game only 2players can play so index 0 of player is player 1 and index 1 is player AI-->
         <div class="player-board top">
-          <div class="player-label">{{player1Name}} ({{player1Score}} point(s))</div>
-          <div class="player-deck">
-            <img src="images/cards/card_back.jpg">
+          <div class="player-label">{{players[0].name}} ({{players[0].score}} point(s))</div>
+          <div class="player-deck" >
+            <img src="images/cards/card_back.jpg" ng-click="computeTurn()">
           </div>
 
         </div>
 
         <!-- Where the cards goes -->
         <div class="war-zone">
-          <div class="board-label">Turn : {{turnNumber}}<br>War : {{warNumber}}</div>
+          <div class="board-label">Turn : {{gameData.turnNumber}}<br>War : {{gameData.warNumber}}</div>
           <div class="played-card player-1">
-            <img ng-src="images/cards/{{player1CardImgName}}" ng-show="player1CardImgName">
+            <img ng-src="images/cards/{{players[0].cardImgName}}" ng-show="players[0].cardImgName">
           </div>
           <div class="played-card player-2">
-            <img ng-src="images/cards/{{player2CardImgName}}" ng-show="player2CardImgName">
+            <img ng-src="images/cards/{{players[1].cardImgName}}" ng-show="players[1].cardImgName">
           </div>
         </div>
 
         <!-- Down player board -->
         <div class="player-board bottom">
-          <div class="player-label">{{player2Name}} ({{player2Score}} point(s))</div>
+          <div class="player-label">{{players[1].name}} ({{players[1].score}} point(s))</div>
           <div class="player-deck">
             <img src="images/cards/card_back.jpg">
           </div>
         </div>
       </div>
-      <!-- <div class="winner-message" ng-if="gameEnd">Game End a Player win</div> -->
     </div>
 
     <div class="war-board-small">

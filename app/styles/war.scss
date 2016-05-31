@@ -97,7 +97,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   top: $header_height + $navigation_height;
   bottom: $footer_height;
   right: $large_border_margin;
-  left: $large_border_margin + 200px;
+  left: $large_border_margin;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
   margin: 10px 5px 5px 5px;
@@ -126,7 +126,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   top: $header_height + $navigation_height;
   bottom: $footer_height;
   right: $large_border_margin;
-  left: $large_border_margin + 200px;
+  left: $large_border_margin;
   border-left:solid $item_delimiter_color 2px;
   border-right:solid $item_delimiter_color 2px;
   margin: 10px 5px 5px 5px;
@@ -151,6 +151,10 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
     .player-deck {
       height: 150px;
       width: 100px;
+    }
+
+    .player-deck:hover {
+      cursor: pointer;
     }
 
     .board-label {
