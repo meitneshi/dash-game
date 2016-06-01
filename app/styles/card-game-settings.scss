@@ -1,0 +1,45 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+@import "vars.scss";
+@import "mixins.scss";
+
+.settings {
+  background-color: $item_background_color;
+  position: fixed;
+  min-width:900px;
+  min-height: 700px;
+  top: $header_height + $navigation_height;
+  bottom: $footer_height;
+  right: $large_border_margin;
+  left: $large_border_margin;
+  border-left:solid $item_delimiter_color 2px;
+  border-right:solid $item_delimiter_color 2px;
+  margin: 10px 5px 5px 5px;
+  overflow-y:auto;
+  overflow-x:auto;
+  .player-settings {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 20px;
+    color: $main_text_color;
+
+    select {
+      height: 45px;
+      color: #000 !important;
+      margin-bottom: 20px;
+    }
+  }
+  .player-input {
+    color:#000;
+    @include border-radius-minimal(2px);
+  }
+  .player-row {
+    margin:5px;
+  }
+}
