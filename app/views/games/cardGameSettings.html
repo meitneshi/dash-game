@@ -1,11 +1,17 @@
 <div class="settings" ng-show=!gameData.warInitialized>
   <div class="player-settings">
+    <select ng-model="gameData.resolution.code">
+      <option value="0" selected>--Select the resolution of the game--</option>
+      <option value="1">Small (600px x 465px)</option>
+      <option value="2">Medium (750px x 585px)</option>
+      <option value="3">Large (900px x 700px)</option>
+    </select><br>
     <select ng-model="gameData.nbPlayers">
       <option value=0 selected>--Select the number of players--</option>
       <option ng-repeat="nbPlayer in game.possibleNbNonAIPLayers" value="{{nbPlayer}}">{{nbPlayer}}</option>
     </select>
     <div class="action">
-      <div class="btn btn-success" ng-click="initPlayers()">Set Number of players</div>
+      <div class="btn btn-success" ng-click="initPlayers()">Set Parameters</div>
     </div>
   </div>
 

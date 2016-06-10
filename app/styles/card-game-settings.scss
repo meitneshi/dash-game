@@ -12,8 +12,6 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 .settings {
   background-color: $item_background_color;
   position: fixed;
-  min-width:900px;
-  min-height: 700px;
   top: $header_height + $navigation_height;
   bottom: $footer_height;
   right: $large_border_margin;
@@ -23,6 +21,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   margin: 10px 5px 5px 5px;
   overflow-y:auto;
   overflow-x:auto;
+
   .player-settings {
     padding-top: 30px;
     text-align: center;
@@ -41,5 +40,14 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   }
   .player-row {
     margin:5px;
+  }
+}
+
+@media(max-width: $width_limit_medium_small) {
+  .settings {
+    top: $small_header_height + $navigation_height;
+    bottom: $small_border_margin;
+    left: $small_border_margin;
+    right: $small_border_margin;
   }
 }

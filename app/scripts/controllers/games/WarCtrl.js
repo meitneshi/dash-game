@@ -155,7 +155,37 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
        "targetedScore": 10,
        "cardInPool": [],
        "winner": null,
-       "nbPlayers": "0"
+       "nbPlayers": "0",
+       "resolution": {
+         "code": "2",
+         "label": "medium"
+       }
+     }
+   }
+
+   /**
+    * Set resolution of the game
+    */
+   var setResolution = function (resolution) {
+     console.log(resolution)
+     switch (resolution.code) {
+       case "1":
+          //Small resolution (board : w: - h: )
+          $scope.gameData.resolution.label="small";
+          break;
+      case "2":
+          //Medium resolution (board : w: - h: )
+          $scope.gameData.resolution.label="medium";
+          break;
+      case "3":
+          //Large resolution (board : w: 900px - h: 700px)
+          $scope.gameData.resolution.label="large";
+          break;
+      default:
+          //Dfault Medium Resolution
+          $scope.gameData.resolution.code="2";
+          $scope.gameData.resolution.label="medium";
+          break;
      }
    }
 
@@ -244,6 +274,9 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
    * Distribute the cards to all players
    */
   $scope.distribute = function () {
+    //set resolution
+    setResolution($scope.gameData.resolution);
+
     $scope.cards = cardService.shuffleDeck($scope.cards);
 
     var allDecks = [];
@@ -270,6 +303,7 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   $scope.game = localStorageService.get("currentGame");
   $scope.initCards();
   initializeGameData();
+  setResolution($scope.gameData.resolution);
 };
 
 angular.module('dashGameApp').controller('WarCtrl', ['$scope', 'cardService', 'sharedService', 'localStorageService', WarCtrl]);

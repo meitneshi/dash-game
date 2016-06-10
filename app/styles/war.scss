@@ -19,6 +19,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   background-color: $item_background_color;
   margin: 10px 0px 5px 0px;
 }
+
 .modal-content {
   position: absolute;
   width: 100%;
@@ -89,11 +90,9 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   }
 }
 
-.war-board {
+.war-board-container {
   background-color: $item_background_color;
   position: fixed;
-  min-width:900px;
-  min-height: 700px;
   top: $header_height + $navigation_height;
   bottom: $footer_height;
   right: $large_border_margin;
@@ -103,120 +102,325 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
   margin: 10px 5px 5px 5px;
   overflow-y:auto;
   overflow-x:auto;
-  .cards-board {
-    position: relative;
-    margin: 15px;
-    height:90%;
-    width:90%;
-    @include border-radius-minimal(50px);
-    background-color: $cards-board-color;
+  .war-board-small {
+    height: 465px;
+    width: 600px;
+    margin:auto;
 
-    .player-label {
-      position: absolute;
-      left:25px;
-      font-size: 25px;
-      font-weight: bold;
-      color: $main_text_color;
-    }
+    .cards-board {
+      position: relative;
+      margin-top: 15px;
+      height:100%;
+      width:100%;
+      @include border-radius-minimal(50px);
+      background-color: $cards-board-color;
 
-    .player-deck {
-      height: 150px;
-      width: 100px;
-    }
+      .player-label {
+        position: absolute;
+        left:25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $main_text_color;
+      }
 
-    .player-deck:hover {
-      cursor: pointer;
-    }
-
-    .board-label {
-      position: absolute;
-      left:25px;
-      font-size: 20px;
-      font-weight: bold;
-      color: $main_text_color;
-    }
-
-    .back-img {
-      width: 100%;
-      height: 100%;
-      background:url("../images/games_icons/war_icon.png") no-repeat center center;
-      filter: opacity(0.5);
-    }
-
-    .player-board {
-      margin: 10px auto 10px auto;
-      height: 140px;
-      width: 100%;
-
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .player-board.top {
-      position: absolute;
-      top: 10px;
-    }
-
-    .player-board.bottom {
-      position: absolute;
-      bottom: 10px;
-    }
-
-    .war-zone {
-      position: absolute;
-      top:160px;
-      bottom:160px;
-      margin: 10px auto 10px auto;
-      width: 100%;
-
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      .played-card {
-        height: 114px;
-        width:83px;
-        margin: auto 5px auto 5px;
-        z-index: 5;
+      .player-deck {
         img {
-          display:block;
-          margin:auto;
+          height: 110px;
+        }
+        height: 110px;
+        width: 100px;
+      }
+
+      .player-deck:hover {
+        cursor: pointer;
+      }
+
+      .board-label {
+        position: absolute;
+        left:25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $main_text_color;
+      }
+
+      .back-img {
+        width: 100%;
+        height: 100%;
+        background:url("../images/games_icons/war_icon.png") no-repeat center center;
+        filter: opacity(0.5);
+      }
+
+      .player-board {
+        margin: 10px auto 10px auto;
+        height: 110px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .player-board.top {
+        position: absolute;
+        top: 10px;
+      }
+
+      .player-board.bottom {
+        position: absolute;
+        bottom: 10px;
+      }
+
+      .war-zone {
+        position: absolute;
+        top:130px;
+        bottom:130px;
+        margin: 10px auto 10px auto;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .played-card {
+          height: 110px;
+          width:83px;
+          margin: auto 5px auto 5px;
+          z-index: 5;
+          img {
+            height: 110px;
+            display:block;
+            margin:auto;
+          }
+        }
+
+        .played-card.player-1 {
+          margin-top: 5px !important;
+        }
+
+        .played-card.player-2 {
+          margin-bottom: 5px !important;
         }
       }
+    }
+  }
+  .war-board-medium {
+    height: 585px;
+    width: 750px;
+    margin:auto;
 
-      .played-card.player-1 {
-        margin-top: 5px !important;
+    .cards-board {
+      position: relative;
+      margin-top: 15px;
+      height:100%;
+      width:100%;
+      @include border-radius-minimal(50px);
+      background-color: $cards-board-color;
+
+      .player-label {
+        position: absolute;
+        left:25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $main_text_color;
       }
 
-      .played-card.player-2 {
-        margin-bottom: 5px !important;
+      .player-deck {
+        img {
+          height: 130px;
+        }
+        height: 130px;
+        width: 100px;
+      }
+
+      .player-deck:hover {
+        cursor: pointer;
+      }
+
+      .board-label {
+        position: absolute;
+        left:25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $main_text_color;
+      }
+
+      .back-img {
+        width: 100%;
+        height: 100%;
+        background:url("../images/games_icons/war_icon.png") no-repeat center center;
+        filter: opacity(0.5);
+      }
+
+      .player-board {
+        margin: 10px auto 10px auto;
+        height: 130px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .player-board.top {
+        position: absolute;
+        top: 10px;
+      }
+
+      .player-board.bottom {
+        position: absolute;
+        bottom: 10px;
+      }
+
+      .war-zone {
+        position: absolute;
+        top:150px;
+        bottom:150px;
+        margin: 10px auto 10px auto;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .played-card {
+          height: 130px;
+          margin: auto 5px auto 5px;
+          z-index: 5;
+          img {
+            height: 130px;
+            display:block;
+            margin:auto;
+          }
+        }
+
+        .played-card.player-1 {
+          margin-top: 5px !important;
+        }
+
+        .played-card.player-2 {
+          margin-bottom: 5px !important;
+        }
+      }
+    }
+  }
+//large TODO
+  .war-board-large {
+    height: 700px;
+    width: 900px;
+    margin:auto;
+
+    .cards-board {
+      position: relative;
+      margin-top: 15px;
+      height:100%;
+      width:100%;
+      @include border-radius-minimal(50px);
+      background-color: $cards-board-color;
+
+      .player-label {
+        position: absolute;
+        left:25px;
+        font-size: 25px;
+        font-weight: bold;
+        color: $main_text_color;
+      }
+
+      .player-deck {
+        height: 150px;
+        width: 100px;
+      }
+
+      .player-deck:hover {
+        cursor: pointer;
+      }
+
+      .board-label {
+        position: absolute;
+        left:25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $main_text_color;
+      }
+
+      .back-img {
+        width: 100%;
+        height: 100%;
+        background:url("../images/games_icons/war_icon.png") no-repeat center center;
+        filter: opacity(0.5);
+      }
+
+      .player-board {
+        margin: 10px auto 10px auto;
+        height: 140px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .player-board.top {
+        position: absolute;
+        top: 10px;
+      }
+
+      .player-board.bottom {
+        position: absolute;
+        bottom: 10px;
+      }
+
+      .war-zone {
+        position: absolute;
+        top:160px;
+        bottom:160px;
+        margin: 10px auto 10px auto;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .played-card {
+          height: 114px;
+          width:83px;
+          margin: auto 5px auto 5px;
+          z-index: 5;
+          img {
+            display:block;
+            margin:auto;
+          }
+        }
+
+        .played-card.player-1 {
+          margin-top: 5px !important;
+        }
+
+        .played-card.player-2 {
+          margin-bottom: 5px !important;
+        }
       }
     }
   }
 }
 
-.war-board-small {
-  display: none;
-}
-
-@media(max-width: $limit_width_war_game), (max-height: $limit_height_war_game) {
-  .war-board, .settings, .cmd-board {
-    display:none;
+@media(max-width: $width_limit_medium_small) {
+  .war-game-container {
+    top: $small_header_height + $navigation_height;
+    bottom: $small_border_margin;
+    left: $small_border_margin;
+    right: $small_border_margin;
   }
-  .war-board-small {
-    margin: 10px 5px 5px 5px;
-    padding-top: 25px;
-    position: fixed;
-    top: $header_height + $navigation_height;
-    bottom: $footer_height;
-    right: $large_border_margin;
-    left: $large_border_margin;
-    font-size: 15px;
-    text-align: center;
-    color: $main_text_color;
-    display: block;
+
+  .war-board-container {
+    top: $small_header_height + $navigation_height;
+    bottom: $small_border_margin;
+    left: $small_border_margin;
+    right: $small_border_margin;
   }
 }
