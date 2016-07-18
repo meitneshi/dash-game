@@ -1,10 +1,10 @@
 /**
- * Copyright © 2014 by eBusiness Information
+ * Copyright © 2016 by Maxime Bibos
  * All rights reserved. This source code or any portion thereof
  * may not be reproduced or used in any manner whatsoever
- * without the express written permission of eBusiness Information.
+ * without the express written permission of Maxime Bibos.
  *
- * Created by mbibos on 10/03/15.
+ * Created by mbibos .
  */
 
 var NavigationCtrl = function ($scope, $location) {
