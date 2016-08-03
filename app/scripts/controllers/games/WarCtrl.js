@@ -220,7 +220,6 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     //reset the arrayof players
     $scope.players = [];
 
-console.log(playersSettings);
     //create players for each settings
     for (var i = 0; i < playersSettings.length; i++) {
       var player = {
@@ -231,6 +230,7 @@ console.log(playersSettings);
       }
       //add settings from setting view
       angular.merge(player, playersSettings[i]);
+
       $scope.players.push(player);
     }
   };
