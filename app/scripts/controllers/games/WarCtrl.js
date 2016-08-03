@@ -147,19 +147,13 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     */
    var initializeGameData = function () {
      $scope.gameData = {
+       "resolution": {},
        "gameEnd": false,
-       "warInitialized": false,
        "turnNumber": 0,
        "warNumber": 0,
        "poolScore": 0,
-       "targetedScore": 10,
        "cardInPool": [],
-       "winner": null,
-       "nbPlayers": "0",
-       "resolution": {
-         "code": "2",
-         "label": "medium"
-       }
+       "winner": null
      }
    }
 
@@ -167,26 +161,8 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     * Set resolution of the game
     */
    var setResolution = function (resolution) {
-     console.log(resolution)
-     switch (resolution.code) {
-       case "1":
-          //Small resolution (board : w: - h: )
-          $scope.gameData.resolution.label="small";
-          break;
-      case "2":
-          //Medium resolution (board : w: - h: )
-          $scope.gameData.resolution.label="medium";
-          break;
-      case "3":
-          //Large resolution (board : w: 900px - h: 700px)
-          $scope.gameData.resolution.label="large";
-          break;
-      default:
-          //Dfault Medium Resolution
-          $scope.gameData.resolution.code="2";
-          $scope.gameData.resolution.label="medium";
-          break;
-     }
+     $scope.gameData.resolution.code = resolution.code;
+     $scope.gameData.resolution.label = resolution.label;
    }
 
 
@@ -240,33 +216,22 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
   /**
    * Init the array of players
    */
-  $scope.initPlayers = function () {
+  $scope.initPlayers = function (playersSettings) {
     //reset the arrayof players
     $scope.players = [];
 
-    //create the non AI players
-    for (var i = 0; i < $scope.gameData.nbPlayers; i++) {
+console.log(playersSettings);
+    //create players for each settings
+    for (var i = 0; i < playersSettings.length; i++) {
       var player = {
-        "name": "Player " + (i+1),
         "score": 0,
         "cardPlayed": {},
         "cardImgName": null,
         "deck": []
-      };
+      }
+      //add settings from setting view
+      angular.merge(player, playersSettings[i]);
       $scope.players.push(player);
-    }
-
-    //Add AI player if needed (ONLY IF non AI player have been initialized)
-    if ($scope.players.length !== 0 && $scope.game.AIPlayersRequired) {
-      var AIPlayer = {
-        "name": "Player CPU",
-        "score": 0,
-        "cardPlayed": {},
-        "cardImgName": null,
-        "deck": []
-      };
-
-      $scope.players.push(AIPlayer);
     }
   };
 
@@ -274,9 +239,6 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
    * Distribute the cards to all players
    */
   $scope.distribute = function () {
-    //set resolution
-    setResolution($scope.gameData.resolution);
-
     $scope.cards = cardService.shuffleDeck($scope.cards);
 
     var allDecks = [];
@@ -297,13 +259,24 @@ var WarCtrl = function ($scope, cardService, sharedService, localStorageService)
     $scope.cards = cards;
     //For War game, the Ace have a superior value to the King, set it here
     initSpecialRule();
+    $scope.distribute();
   });
+
+  /**
+   * Listener when the settings are loaded from the setting view
+   */
+  $scope.$on("settings_initialized", function (e, settings) {
+    if (settings.currentGame === "War") {
+      initializeGameData();
+      setResolution(settings.gameSettings.resolution);
+      $scope.gameData.targetedScore = settings.gameSettings.targetedScore;
+      $scope.initPlayers(settings.gameSettings.playersSettings);
+      $scope.initCards();
+    }
+  })
 
   //Initialization
   $scope.game = localStorageService.get("currentGame");
-  $scope.initCards();
-  initializeGameData();
-  setResolution($scope.gameData.resolution);
 };
 
 angular.module('dashGameApp').controller('WarCtrl', ['$scope', 'cardService', 'sharedService', 'localStorageService', WarCtrl]);

@@ -1,32 +1,32 @@
-<div class="settings" ng-show=!gameData.warInitialized>
+<div ng-controller="CardGameSettingsCtrl" class="settings">
   <div class="player-settings">
-    <select ng-model="gameData.resolution.code">
+    <select ng-model="gameSettings.resolution.code">
       <option value="0" selected>--Select the resolution of the game--</option>
       <option value="1">Small (600px x 465px)</option>
       <option value="2">Medium (750px x 585px)</option>
       <option value="3">Large (900px x 700px)</option>
     </select><br>
-    <select ng-model="gameData.nbPlayers">
+    <select ng-model="gameSettings.nbPlayers">
       <option value=0 selected>--Select the number of players--</option>
       <option ng-repeat="nbPlayer in game.possibleNbNonAIPLayers" value="{{nbPlayer}}">{{nbPlayer}}</option>
     </select>
     <div class="action">
-      <div class="btn btn-success" ng-click="initPlayers()">Set Parameters</div>
+      <div class="btn btn-success" ng-click="initPlayersSettings()">Set Parameters</div>
     </div>
   </div>
 
-  <div class="player-settings" ng-show="players.length !== 0">
+  <div class="player-settings" ng-show="gameSettings.playersSettings.length !== 0">
     <div class="row player-row">
       Set here the name of the players
     </div>
     <br>
-    <div class="row player-row" ng-repeat="player in players">
+    <div class="row player-row" ng-repeat="playerSettings in gameSettings.playersSettings">
       <div class="col-md-3"></div>
       <div class="col-md-2">
         Player {{$index+1}}:
       </div>
       <div class="col-md-4 player-input">
-        <input type="text" ng-model="player.name">
+        <input type="text" ng-model="playerSettings.name">
       </div>
       <div class="col-md-3"></div>
     </div>
@@ -37,13 +37,13 @@
         Max Score:
       </div>
       <div class="col-md-4 player-input">
-        <input type="number" ng-model="gameData.targetedScore">
+        <input type="number" ng-model="gameSettings.targetedScore">
       </div>
       <div class="col-md-3"></div>
     </div>
 
     <div class="action">
-      <div class="btn btn-success" ng-click="distribute()">Validate Settings and Distribute</div>
+      <div class="btn btn-success" ng-click="launchGame()">Validate Settings and Distribute</div>
     </div>
   </div>
 </div>
